@@ -38,13 +38,13 @@
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-white dark:from-gray-900 dark:to-black text-gray-900 dark:text-gray-100 transition-colors duration-500">
 
-  <!-- NAVBAR -->
+
   <nav class="glass flex justify-between items-center p-6 max-w-6xl mx-auto rounded-xl mt-4 shadow-lg">
     <h1 class="text-2xl font-bold">Kuma | Frontend Dev & Teacher</h1>
     </button>
   </nav>
 
-  <!-- WELCOME -->
+
   <section class="glass max-w-4xl mx-auto p-10 text-center mt-10 rounded-xl shadow-lg">
     <h2 class="text-5xl font-extrabold mb-4">Hey there, I'm Kuma Tsegaye.</h2>
     <p class="text-xl mb-6">Front-End Developer & Web Instructor from Ethiopia.</p>
@@ -53,7 +53,7 @@
     </a>
   </section>
 
-  <!-- ABOUT ME -->
+
   <section class="glass max-w-4xl mx-auto p-6 flex flex-col md:flex-row items-center md:space-x-6 mt-10 rounded-xl shadow-lg">
     <img
       src="profile.jpg"
@@ -71,7 +71,7 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
+
   <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
     <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">Projects</h3>
     <div class="space-y-6">
@@ -104,21 +104,20 @@
     </div>
   </section>
 
-<!-- EXPERIENCE BLOG SECTION -->
+
 <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
   <h3 class="text-3xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">Experience & Certificates</h3>
 
   <div class="grid sm:grid-cols-2 gap-6">
 
-    <!-- Leadstar Academy -->
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-      <h4 class="text-xl font-bold mb-2">👨‍🏫 Leadstar Academy</h4>
+      <h4 class="text-xl font-bold mb-2">Leadstar Academy</h4>
       <p class="text-gray-700 dark:text-gray-300 text-sm">
         IT Department Leader & Programming Lecturer mentoring devs and managing the academy's tech presence.
       </p>
     </div>
 
-    <!-- Leadstar Certificates -->
+    
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
       <h4 class="text-xl font-bold mb-2">🎓 Leadstar Certificates</h4>
       <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">Educational and technical contribution certificates:</p>
@@ -128,7 +127,7 @@
       </div>
     </div>
 
-    <!-- Benchmark -->
+    
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
       <h4 class="text-xl font-bold mb-2">🧠 Benchmark Leadership Certificate</h4>
       <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
@@ -137,7 +136,7 @@
       <img src="Benchmarkcertificate.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
     </div>
 
-    <!-- Udacity -->
+   
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
       <h4 class="text-xl font-bold mb-2">💡 Udacity Programming Foundations</h4>
       <p class="text-gray-700 dark:text-gray-300 text-sm mb-1">
@@ -155,18 +154,18 @@
   <img id="modalImg" src="" alt="Expanded certificate" class="max-w-[90%] max-h-[90%] rounded shadow-lg" />
 </div>
 
-<section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
-  <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">What I Teach</h3>
-  <ul class="list-disc pl-5 space-y-1 text-gray-800">
-    <li>HTML & CSS Basics</li>
-    <li>JavaScript Fundamentals</li>
-    <li>Layout Design (Flexbox, Grid)</li>
-    <li>Responsive Design</li>
-  </ul>
-</section>
+
+  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
+    <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">What I Teach</h3>
+    <ul class="list-disc pl-5 space-y-1">
+      <li>HTML & CSS Basics</li>
+      <li>JavaScript Fundamentals</li>
+      <li>Layout Design (Flexbox, Grid)</li>
+      <li>Responsive Design</li>
+    </ul>
+  </section>
 
 
-  <!-- CONTACT -->
   <section id="contact" class="glass max-w-4xl mx-auto p-6 mt-10 text-center rounded-xl shadow-lg mb-10">
   <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">Contact Me</h3>
   <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-blue-600">
@@ -220,7 +219,6 @@
 
 
   <script>
-    // Image Modal
     function openModal(src) {
       const modal = document.getElementById("imageModal");
       const modalImg = document.getElementById("modalImg");
