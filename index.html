@@ -104,46 +104,52 @@
     </div>
   </section>
 
- <!-- EXPERIENCE BLOG SECTION -->
+<!-- EXPERIENCE BLOG SECTION -->
 <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
   <h3 class="text-3xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">Experience & Certificates</h3>
 
-  <article class="mb-8">
-    <h4 class="text-xl font-bold mb-2">👨‍🏫 Leadstar Academy</h4>
-    <p class="text-gray-700 leading-relaxed">
-      Serving as the IT Department Leader and Programming Lecturer, I had the opportunity to mentor budding developers and oversee tech initiatives that helped shape the academy's digital presence.
-    </p>
-  </article>
+  <div class="grid sm:grid-cols-2 gap-6">
 
-  <article class="mb-8">
-    <h4 class="text-xl font-bold mb-2">🎓 Certificates from Leadstar Academy</h4>
-    <p class="text-gray-700 leading-relaxed mb-2">
-      These certificates highlight my contribution to education and my technical capabilities:
-    </p>
-    <div class="flex flex-wrap gap-4">
-      <img src="ITcertificate.jpg" width="256" height="180" class="rounded shadow cursor-pointer" onclick="openModal(this.src)" />
-      <img src="ITcertificate2.jpg" width="256" height="180" alt="Second Certificate" class="rounded shadow cursor-pointer" onclick="openModal(this.src)" />
+    <!-- Leadstar Academy -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+      <h4 class="text-xl font-bold mb-2">👨‍🏫 Leadstar Academy</h4>
+      <p class="text-gray-700 dark:text-gray-300 text-sm">
+        IT Department Leader & Programming Lecturer mentoring devs and managing the academy's tech presence.
+      </p>
     </div>
-  </article>
 
-  <article class="mb-8">
-    <h4 class="text-xl font-bold mb-2">🧠 Benchmark Leadership Certificate</h4>
-    <p class="text-gray-700 leading-relaxed mb-2">
-      Recognized for excellence in leadership and initiative-taking, awarded by Benchmark.
-    </p>
-    <img src="Benchmarkcertificate.jpg" width="256" height="180" class="rounded shadow cursor-pointer" onclick="openModal(this.src)" />
-  </article>
+    <!-- Leadstar Certificates -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+      <h4 class="text-xl font-bold mb-2">🎓 Leadstar Certificates</h4>
+      <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">Educational and technical contribution certificates:</p>
+      <div class="flex gap-3">
+        <img src="ITcertificate.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
+        <img src="ITcertificate2.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
+      </div>
+    </div>
 
-  <article>
-    <h4 class="text-xl font-bold mb-2">💡 Udacity Programming Foundations</h4>
-    <p class="text-gray-700 leading-relaxed mb-2">
-      Completed Udacity's Programming Foundations Nanodegree. Click below to verify:
-    </p>
-    <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">🔗 View Certificate</a>
-    <br />
-    <img src="udacityimg.jpg" width="256" height="180" alt="Udacity Certificate" class="rounded shadow mt-2 cursor-pointer" onclick="openModal(this.src)" />
-  </article>
+    <!-- Benchmark -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+      <h4 class="text-xl font-bold mb-2">🧠 Benchmark Leadership Certificate</h4>
+      <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
+        For outstanding leadership & initiative.
+      </p>
+      <img src="Benchmarkcertificate.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
+    </div>
+
+    <!-- Udacity -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+      <h4 class="text-xl font-bold mb-2">💡 Udacity Programming Foundations</h4>
+      <p class="text-gray-700 dark:text-gray-300 text-sm mb-1">
+        Udacity Nanodegree Certificate:
+      </p>
+      <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" class="text-blue-600 hover:underline text-sm">🔗 View Certificate</a>
+      <img src="udacityimg.jpg" class="rounded shadow mt-2 cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
+    </div>
+
+  </div>
 </section>
+
 
 <div id="imageModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50" onclick="closeModal()">
   <img id="modalImg" src="" alt="Expanded certificate" class="max-w-[90%] max-h-[90%] rounded shadow-lg" />
