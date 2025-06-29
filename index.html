@@ -34,18 +34,24 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       transition: opacity 0.3s ease-in-out;
     }
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-white dark:from-gray-900 dark:to-black text-gray-900 dark:text-gray-100 transition-colors duration-500">
 
-
-  <nav class="glass flex justify-between items-center p-6 max-w-6xl mx-auto rounded-xl mt-4 shadow-lg">
+  <nav class="glass flex justify-between items-center p-6 max-w-6xl mx-auto rounded-xl mt-4 shadow-lg fade-in-up">
     <h1 class="text-2xl font-bold">Kuma | Frontend Dev & Teacher</h1>
-    </button>
   </nav>
 
-
-  <section class="glass max-w-4xl mx-auto p-10 text-center mt-10 rounded-xl shadow-lg">
+  <section class="glass max-w-4xl mx-auto p-10 text-center mt-10 rounded-xl shadow-lg fade-in-up">
     <h2 class="text-5xl font-extrabold mb-4">Hey there, I'm Kuma Tsegaye.</h2>
     <p class="text-xl mb-6">Front-End Developer & Web Instructor from Ethiopia.</p>
     <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all">
@@ -53,110 +59,81 @@
     </a>
   </section>
 
-
-  <section class="glass max-w-4xl mx-auto p-6 flex flex-col md:flex-row items-center md:space-x-6 mt-10 rounded-xl shadow-lg">
-    <img
-      src="profile.jpg"
-      alt="Profile photo of Kuma Tsegaye"
-      class="w-32 h-32 rounded-full shadow-lg mb-4 md:mb-0 border-4 border-blue-500"
-    />
+  <section class="glass max-w-4xl mx-auto p-6 flex flex-col md:flex-row items-center md:space-x-6 mt-10 rounded-xl shadow-lg fade-in-up">
+    <img src="profile.jpg" alt="Profile photo" class="w-32 h-32 rounded-full shadow-lg mb-4 md:mb-0 border-4 border-blue-500" />
     <div>
       <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">About Me</h3>
-      <p>
-        I'm an 18-year-old passionate front-end developer in Ethiopia.
-        I specialize in HTML, CSS, JavaScript, and Tailwind. I'm building real projects and
-        helping others level up their skills.
-      </p>
-      <p class="mt-2 font-semibold"><strong>Tech Stack:</strong> HTML | CSS | JavaScript | Tailwind </p>
+      <p>I'm an 18-year-old front-end developer in Ethiopia. I specialize in HTML, CSS, JavaScript, and Tailwind. I build real projects and help others grow.</p>
+      <p class="mt-2 font-semibold"><strong>Tech Stack:</strong> HTML | CSS | JavaScript | Tailwind</p>
     </div>
   </section>
 
-
-  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
+  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg fade-in-up">
     <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">Projects</h3>
     <div class="space-y-6">
       <div>
         <h4 class="text-xl font-bold">Exploromia</h4>
-        <p class="mb-2">A tourism helper web app to promote Oromia’s beauty.</p>
+        <p class="mb-2">A tourism web app promoting Oromia’s beauty.</p>
         <p><strong>I Used:</strong> HTML, CSS, JavaScript</p>
         <br>
-        <a href="https://exploromia.netlify.app" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-blue-600 font-semibold hover:underline">
-          View the Web app
-        </a>
+        <a href="https://exploromia.netlify.app" target="_blank" class="text-blue-600 font-semibold hover:underline">View the Web app</a>
       </div>
       <br>
-       <div>
+      <div>
         <h4 class="text-xl font-bold">Taxi-mate</h4>
         <p class="mb-2">Transportation services in Shashamene, under development.</p>
         <p><strong>I Used:</strong> HTML, JavaScript, Tailwind CSS, MySQL</p>
-         <br>
-        <span class="inline-block mt-2 text-gray-500">coming soon...</span>
+        <br>
+        <span class="text-gray-500">coming soon...</span>
       </div>
-    </div>
-    <br>
+      <br>
       <div>
         <h4 class="text-xl font-bold">Kiraye</h4>
-        <p class="mb-2">Rental platform for houses and cars in Shashamene, under development.</p>
-        <p><strong>I Used:</strong> HTML, JavaScript, CSS, MySQL,</p>
+        <p class="mb-2">Rental platform for houses and cars, under development.</p>
+        <p><strong>I Used:</strong> HTML, JavaScript, CSS, MySQL</p>
         <br>
-        <span class="inline-block mt-2 text-gray-500">coming soon...</span>
+        <span class="text-gray-500">coming soon...</span>
       </div>
     </div>
   </section>
 
-
-<section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
+  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg fade-in-up">
     <h3 class="text-3xl font-semibold mb-6 border-b-2 border-blue-600 inline-block">Experience & Certificates</h3>
     <div class="grid sm:grid-cols-2 gap-6">
-
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 fade-in-up">
         <h4 class="text-xl font-bold mb-2">Leadstar Certificates</h4>
-        <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
-          IT Department member, Leader & Programming Lecturer certificates:
-        </p>
+        <p class="text-sm mb-2 text-gray-700 dark:text-gray-300">IT member, Leader & Programming Lecturer</p>
         <div class="flex gap-3 flex-wrap">
           <img src="IMG_20250628_115425_802.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
           <img src="ITcertificate.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
           <img src="ITcertificate2.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
-          
         </div>
       </div>
-
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 fade-in-up">
         <h4 class="text-xl font-bold mb-2">Benchmark Leadership Certificate</h4>
-        <p class="text-gray-700 dark:text-gray-300 text-sm mb-2">
-          For outstanding leadership & initiative.
-        </p>
+        <p class="text-sm mb-2 text-gray-700 dark:text-gray-300">Outstanding leadership & initiative</p>
         <img src="Benchmarkcertificate.jpg" class="rounded shadow cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
       </div>
-
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 fade-in-up">
         <h4 class="text-xl font-bold mb-2">Udacity Programming Foundations</h4>
-        <p class="text-gray-700 dark:text-gray-300 text-sm mb-1">
-          Udacity Nanodegree Certificate:
-        </p>
+        <p class="text-sm text-gray-700 dark:text-gray-300">Udacity Nanodegree Certificate</p>
         <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" class="text-blue-600 hover:underline text-sm">🔗 View Certificate</a>
         <img src="udacityimg.jpg" class="rounded shadow mt-2 cursor-pointer w-64 h-40 object-cover" onclick="openModal(this.src)" />
       </div>
-
     </div>
   </section>
 
-  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
+  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg fade-in-up">
     <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">Recommendations</h3>
-    <p class="mb-4 text-lg">Professional feedback and endorsements for my work in IT and education.</p>
-    <a href="recomendations.pdf" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all">
-      📄 View PDF Recommendations
-    </a>
+    <p class="mb-4 text-lg text-gray-700 dark:text-gray-300">Feedback and endorsements for my work in IT and teaching.</p>
+    <a href="recomendations.pdf" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-all">📄 View PDF Recommendations</a>
   </section>
 
+  <div id="imageModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50" onclick="closeModal()">
+    <img id="modalImg" src="" alt="Expanded certificate" class="max-w-[90%] max-h-[90%] rounded shadow-lg" />
+  </div>
 
-<div id="imageModal" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50" onclick="closeModal()">
-  <img id="modalImg" src="" alt="Expanded certificate" class="max-w-[90%] max-h-[90%] rounded shadow-lg" />
-</div>
-
-
-  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg">
+  <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg fade-in-up">
     <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">What I Teach</h3>
     <ul class="list-disc pl-5 space-y-1">
       <li>HTML & CSS Basics</li>
@@ -165,7 +142,6 @@
       <li>Responsive Design</li>
     </ul>
   </section>
-
 
   <section id="contact" class="glass max-w-4xl mx-auto p-6 mt-10 text-center rounded-xl shadow-lg mb-10">
   <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">Contact Me</h3>
@@ -218,7 +194,6 @@
   </div>
 </section>
 
-
   <script>
     function openModal(src) {
       const modal = document.getElementById("imageModal");
@@ -230,12 +205,23 @@
 
     function closeModal() {
       const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
       modal.classList.remove("flex");
       modal.classList.add("hidden");
-      modalImg.src = "";
+      document.getElementById("modalImg").src = "";
     }
 
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+    
   </script>
 </body>
 </html>
