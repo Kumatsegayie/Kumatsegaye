@@ -63,14 +63,37 @@
     </a>
   </section>
 
-  <section class="glass max-w-4xl mx-auto p-6 flex flex-col md:flex-row items-center md:space-x-6 mt-10 rounded-xl shadow-lg fade-in-up">
-    <img src="profile.jpg" alt="Profile photo" class="w-32 h-32 rounded-full shadow-lg mb-4 md:mb-0 border-4 border-blue-500" />
-    <div>
-      <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">About Me</h3>
-      <p>I'm an 18-year-old front-end developer in Ethiopia. I specialize in HTML, CSS, JavaScript, and Tailwind. I build real projects and help others grow.</p>
-      <p class="mt-2 font-semibold"><strong>Tech Stack:</strong> HTML | CSS | JavaScript | Tailwind</p>
-    </div>
-  </section>
+<section class="glass max-w-4xl mx-auto p-6 flex flex-col md:flex-row items-center md:space-x-6 mt-10 rounded-xl shadow-lg fade-in-up">
+  <img src="profile.jpg" alt="Profile photo" class="w-32 h-32 rounded-full shadow-lg mb-4 md:mb-0 border-4 border-blue-500" />
+  <div>
+    <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">About Me</h3>
+    <p id="about-text">
+      I'm a front-end developer in Ethiopia. I specialize in HTML, CSS, JavaScript, and Tailwind. I build real projects and help others grow.
+    </p>
+    <p class="mt-2 font-semibold">
+      <strong>Tech Stack:</strong> HTML | CSS | JavaScript | Tailwind
+    </p>
+  </div>
+</section>
+
+<script>
+  function calculateAge(birthMonth, birthDay, birthYear) {
+    const today = new Date();
+    let age = today.getFullYear() - birthYear;
+    const m = today.getMonth() + 1;
+    const d = today.getDate();
+    if (m < birthMonth || (m === birthMonth && d < birthDay)) {
+      age--;
+    }
+    return age;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const age = calculateAge(4, 27, 2007); // April 27, 2007
+    const about = document.getElementById("about-text");
+    about.innerHTML = `I'm a <strong>${age}-year-old</strong> front-end developer in Ethiopia. I specialize in HTML, CSS, JavaScript, and Tailwind. I build real projects and help others grow.`;
+  });
+</script>
 
   <section class="glass max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-lg fade-in-up">
     <h3 class="text-3xl font-semibold mb-4 border-b-2 border-blue-600 inline-block">Projects</h3>
