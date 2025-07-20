@@ -202,56 +202,65 @@
     </section>
   </main>
 
-  <script>
-    function calculateAge(birthMonth, birthDay, birthYear) {
-      const today = new Date();
-      let age = today.getFullYear() - birthYear;
-      const m = today.getMonth() + 1;
-      const d = today.getDate();
-      if (m < birthMonth || (m === birthMonth && d < birthDay)) {
-        age--;
-      }
-      return age;
+<script>
+  function calculateAge(birthMonth, birthDay, birthYear) {
+    const today = new Date();
+    let age = today.getFullYear() - birthYear;
+    const m = today.getMonth() + 1;
+    const d = today.getDate();
+    if (m < birthMonth || (m === birthMonth && d < birthDay)) {
+      age--;
     }
+    return age;
+  }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const age = calculateAge(4, 27, 2007); 
-      const about = document.getElementById("about-text");
-      about.innerHTML = `I'm a <strong>${age}-year-old</strong> front-end developer in Ethiopia. I specialize in HTML, CSS, JavaScript, and Tailwind. I build real projects and help others grow.`;
-    });
-
-    function openModal(src) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      modalImg.src = src;
-      modal.style.display = "flex";
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeModal() {
-      const modal = document.getElementById("imageModal");
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
-      document.getElementById("modalImg").src = "";
-    }
-
+  document.addEventListener("DOMContentLoaded", () => {
+    const age = calculateAge(4, 27, 2007);
+    const about = document.getElementById("about-text");
+    about.innerHTML = `I'm a <strong>${age}-year-old</strong> front-end developer in Ethiopia. I specialize in HTML, CSS, JavaScript, and Tailwind. I build real projects and help others grow.`;
     
-    document.getElementById("imageModal").addEventListener("click", function(e) {
-      if (e.target === this) {
-        closeModal();
+    // Initialize modal as hidden
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+  });
+
+  function openModal(src) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    modalImg.src = src;
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+    
+    // Prevent clicks on the image from closing the modal
+    document.querySelector('.modal-content').addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+    document.getElementById("modalImg").src = "";
+  }
+
+  
+  document.getElementById("imageModal").addEventListener("click", function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
       }
     });
+  }, { threshold: 0.1 });
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-  </script>
+  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
