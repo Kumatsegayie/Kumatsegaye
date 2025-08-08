@@ -209,7 +209,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    const age = calculateAge(4, 27, 2007);
+    const age = calculateAge(4, 27, 2006);
     const about = document.getElementById("about-text");
     about.innerHTML = `I'm a <strong>${age}-year-old</strong> front-end developer in Ethiopia. I specialize in HTML, CSS, JavaScript, and Tailwind. I build real projects and help others grow.`;
     
@@ -225,7 +225,7 @@
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
     
-    // Prevent clicks on the image from closing the modal
+   
     document.querySelector('.modal-content').addEventListener('click', function(e) {
       e.stopPropagation();
     });
@@ -258,5 +258,6 @@
 </script>
 </body>
 </html>
+
 
 
