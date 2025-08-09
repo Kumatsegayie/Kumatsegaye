@@ -17,11 +17,11 @@
     }
     
     .upwork-light {
-      background-color: #f7fafc;
+      background-color: #f8fafc;
     }
     
     .upwork-dark {
-      background-color: #1a202c;
+      background-color: #0f172a;
     }
     
     .upwork-card {
@@ -38,8 +38,8 @@
     }
     
     .dark .upwork-card {
-      background: #2d3748;
-      border-color: #4a5568;
+      background: #1e293b;
+      border-color: #334155;
     }
     
     .upwork-nav {
@@ -48,7 +48,7 @@
     }
     
     .dark .upwork-nav {
-      background: #1a202c;
+      background: #0f172a;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
     
@@ -69,8 +69,16 @@
       color: #14a800;
     }
     
+    .dark .upwork-text-primary {
+      color: #4ade80;
+    }
+    
     .upwork-border-primary {
       border-color: #14a800;
+    }
+    
+    .dark .upwork-border-primary {
+      border-color: #4ade80;
     }
     
     .modal {
@@ -141,8 +149,30 @@
     }
     
     .dark .skill-badge {
-      background-color: #2d4a2a;
-      color: #a3e69b;
+      background-color: #1a3a1e;
+      color: #86efac;
+    }
+    
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #64748b;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .dark .theme-toggle {
+      background: #1e293b;
+      color: #e2e8f0;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -152,14 +182,50 @@
     <div class="flex items-center space-x-3 max-w-6xl mx-auto w-full">
       <img src="favicon.png" alt="Kuma Tsegaye Logo" class="w-8 h-8 rounded" />
       <h1 class="text-xl font-bold">Kuma Tsegaye</h1>
-      <div class="hidden md:flex ml-auto space-x-6">
-        <a href="#about" class="hover:text-green-600 transition">About</a>
-        <a href="#projects" class="hover:text-green-600 transition">Projects</a>
-        <a href="#experience" class="hover:text-green-600 transition">Experience</a>
-        <a href="#contact" class="hover:text-green-600 transition">Contact</a>
+      <div class="hidden md:flex ml-auto space-x-6 items-center">
+        <a href="#about" class="hover:text-green-600 dark:hover:text-green-400 transition">About</a>
+        <a href="#projects" class="hover:text-green-600 dark:hover:text-green-400 transition">Projects</a>
+        <a href="#experience" class="hover:text-green-600 dark:hover:text-green-400 transition">Experience</a>
+        <a href="#contact" class="hover:text-green-600 dark:hover:text-green-400 transition">Contact</a>
+        <button id="themeToggle" class="theme-toggle ml-4">
+          <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+          </svg>
+          <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+          </svg>
+        </button>
       </div>
+      <button id="mobileMenuButton" class="md:hidden ml-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-30 p-4 pt-20">
+    <div class="flex flex-col space-y-6 text-center">
+      <a href="#about" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">About</a>
+      <a href="#projects" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">Projects</a>
+      <a href="#experience" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">Experience</a>
+      <a href="#contact" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">Contact</a>
+      <button id="mobileThemeToggle" class="theme-toggle mx-auto mt-4">
+        <svg id="mobileSunIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+        <svg id="mobileMoonIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+      </button>
+      <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-600 dark:text-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <main class="max-w-6xl mx-auto px-4">
     <section class="text-center py-16 md:py-24 fade-in-up">
@@ -177,11 +243,11 @@
         <div class="flex flex-col md:flex-row items-center">
           <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
             <img src="profilepic.png" alt="Kuma Tsegaye Profile Photo"
-                 class="w-40 h-40 md:w-52 md:h-52 rounded-full shadow-lg border-4 border-green-500 object-cover" />
+                 class="w-40 h-40 md:w-52 md:h-52 rounded-full shadow-lg border-4 border-green-500 dark:border-green-400 object-cover" />
           </div>
           <div>
             <h3 class="text-3xl font-semibold mb-4 pb-2 border-b-2 upwork-border-primary inline-block">About Me</h3>
-            <p id="about-text" class="text-lg leading-relaxed mb-4">
+            <p id="about-text" class="text-lg leading-relaxed mb-4 text-gray-700 dark:text-gray-300">
               I'm a front-end developer and Entrepreneur based in Ethiopia. As the Chief Product Officer (CPO) of Nuner, a rental platform for houses and cars, I combine technical expertise with product leadership. My front-end development skills in HTML, CSS, JavaScript, and Tailwind enable me to build real projects while my entrepreneurial mindset drives innovation and growth.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -355,6 +421,77 @@
   </footer>
 
 <script>
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('themeToggle');
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
+  const mobileSunIcon = document.getElementById('mobileSunIcon');
+  const mobileMoonIcon = document.getElementById('mobileMoonIcon');
+  
+  // Check for saved theme preference or use system preference
+  const currentTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  
+  // Apply the current theme
+  if (currentTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+    sunIcon.classList.add('hidden');
+    moonIcon.classList.remove('hidden');
+    mobileSunIcon.classList.add('hidden');
+    mobileMoonIcon.classList.remove('hidden');
+  } else {
+    document.documentElement.classList.remove('dark');
+    sunIcon.classList.remove('hidden');
+    moonIcon.classList.add('hidden');
+    mobileSunIcon.classList.remove('hidden');
+    mobileMoonIcon.classList.add('hidden');
+  }
+  
+  // Toggle theme
+  function toggleTheme() {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      sunIcon.classList.remove('hidden');
+      moonIcon.classList.add('hidden');
+      mobileSunIcon.classList.remove('hidden');
+      mobileMoonIcon.classList.add('hidden');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+      mobileSunIcon.classList.add('hidden');
+      mobileMoonIcon.classList.remove('hidden');
+    }
+  }
+  
+  // Add event listeners
+  themeToggle.addEventListener('click', toggleTheme);
+  mobileThemeToggle.addEventListener('click', toggleTheme);
+  
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMobileMenu = document.getElementById('closeMobileMenu');
+  
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.remove('hidden');
+  });
+  
+  closeMobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+  });
+  
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+
+  // Age calculation
   function calculateAge(birthMonth, birthDay, birthYear) {
     const today = new Date();
     let age = today.getFullYear() - birthYear;
