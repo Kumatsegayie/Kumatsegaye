@@ -483,26 +483,66 @@ p {
 }
 
 /* Experience Section */
+.experience-section {
+  padding: 3rem 0;
+}
+
+.section-title {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+}
+
+.dark-theme .section-title {
+  border-color: #4ade80; /* Different green for dark mode */
+}
+
+/* Experience Grid Layout */
 .experience-grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Single column on mobile */
 }
 
 @media (min-width: 640px) {
   .experience-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
 }
 
+/* Experience Card Styles */
+.experience-card {
+  background-color: var(--card-bg-light);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-light);
+}
+
+.dark-theme .experience-card {
+  background-color: var(--card-bg-dark);
+  border-color: var(--border-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.experience-card:hover {
+  transform: translateY(-0.3125rem); /* -5px */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Certificate Content Styles */
 .experience-title {
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .experience-subtitle {
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* 14px */
   color: var(--text-muted-light);
   margin-bottom: 1rem;
 }
@@ -511,6 +551,7 @@ p {
   color: var(--text-muted-dark);
 }
 
+/* Certificate Images Layout */
 .certificate-images {
   display: flex;
   gap: 0.75rem;
@@ -524,26 +565,84 @@ p {
   width: 100%;
   height: 12rem;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.certificate-img:hover {
+  transform: scale(1.02);
 }
 
 .single-certificate {
   margin-top: 0.5rem;
 }
 
+/* Certificate Link Styles */
 .certificate-link {
   color: var(--primary-color);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* 14px */
   display: inline-block;
   margin-bottom: 0.75rem;
+  transition: opacity 0.2s ease;
 }
 
 .certificate-link:hover {
   text-decoration: underline;
+  opacity: 0.9;
 }
 
 .dark-theme .certificate-link {
   color: #4ade80;
+}
+
+/* Recommendation Button */
+.recommendation-button {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.recommendation-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Modal Styles for Certificate Images */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation for Section Entries */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Buttons */
@@ -692,3 +791,4 @@ p {
   opacity: 1;
   transform: translateY(0);
 }
+
