@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="light-theme">
+<body class="light-theme no-js">
   <nav class="nav">
     <div class="nav-container">
       <img src="favicon.png" alt="Kuma Tsegaye Logo" class="logo-img" />
@@ -38,10 +38,10 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="mobile-menu hidden">
     <div class="mobile-menu-content">
-      <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
-      <a href="#projects" class="mobile-nav-link" onclick="closeMobileMenu()">Projects</a>
-      <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()">Experience</a>
-      <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#experience" class="mobile-nav-link">Experience</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
       <button id="mobileThemeToggle" class="theme-toggle mobile-theme-toggle">
         <svg id="mobileSunIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
@@ -50,7 +50,7 @@
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
         </svg>
       </button>
-      <button id="closeMobileMenu" class="close-mobile-menu" onclick="closeMobileMenu()">
+      <button id="closeMobileMenu" class="close-mobile-menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -150,43 +150,47 @@
       </div>
     </section>
 
-    <section id="experience" class="section fade-in-up">
-      <h3 class="section-title">Experience & Certificates</h3>
-      <div class="experience-grid">
-        <div class="card fade-in-up">
-          <h4 class="experience-title">Leadstar Certificates</h4>
-          <p class="experience-subtitle">IT member, Leader & Programming Lecturer</p>
-          <div class="certificate-images">
-            <img src="IMG_20250628_115425_802.jpg" alt="Leadstar Certificate 1" class="certificate-img" onclick="openModal(this.src)" />
-            <img src="ITcertificate.jpg" alt="Leadstar Certificate 2" class="certificate-img" onclick="openModal(this.src)" />
-            <img src="ITcertificate2.jpg" alt="Leadstar Certificate 3" class="certificate-img" onclick="openModal(this.src)" />
-          </div>
-        </div>
-        
-        <div class="card fade-in-up">
-          <h4 class="experience-title">Benchmark Leadership Certificate</h4>
-          <p class="experience-subtitle">Outstanding leadership & initiative</p>
-          <img src="Benchmarkcertificate.jpg" alt="Benchmark Leadership Certificate" class="certificate-img single-certificate" onclick="openModal(this.src)" />
-        </div>
-        
-        <div class="card fade-in-up">
-          <h4 class="experience-title">Udacity Programming Foundations</h4>
-          <p class="experience-subtitle">Udacity Nanodegree Certificate</p>
-          <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" class="certificate-link">🔗 View Certificate</a>
-          <img src="udacityimg.jpg" alt="Udacity Certificate" class="certificate-img single-certificate" onclick="openModal(this.src)" />
-        </div>
-        
-        <div class="card fade-in-up">
-          <h4 class="experience-title">Recommendations</h4>
-          <p class="experience-subtitle">Feedback and endorsements for my work in Leadstar academy IT club.</p>
-          <a href="recomendations.pdf" target="_blank" class="primary-button small-button">
-            📄 View Recommendation
-          </a>
-        </div>
+   <section id="experience" class="section fade-in-up">
+  <h3 class="section-title">Experience & Certificates</h3>
+  <div class="experience-grid">
+    
+    <div class="experience-card fade-in-up">
+      <h4 class="experience-title">Leadstar Certificates</h4>
+      <p class="experience-subtitle">IT member, Leader & Programming Lecturer</p>
+      <div class="certificate-images">
+        <img src="IMG_20250628_115425_802.jpg" alt="Leadstar Certificate 1" class="certificate-img" />
+        <img src="ITcertificate.jpg" alt="Leadstar Certificate 2" class="certificate-img" />
+        <img src="ITcertificate2.jpg" alt="Leadstar Certificate 3" class="certificate-img" />
       </div>
-    </section>
+    </div>
+    
+    <div class="experience-card fade-in-up">
+      <h4 class="experience-title">Benchmark Leadership Certificate</h4>
+      <p class="experience-subtitle">Outstanding leadership & initiative</p>
+      <img src="Benchmarkcertificate.jpg" alt="Benchmark Leadership Certificate" class="certificate-img single-certificate" />
+    </div>
+    
+    <div class="experience-card fade-in-up">
+      <h4 class="experience-title">Udacity Programming Foundations</h4>
+      <p class="experience-subtitle">Udacity Nanodegree Certificate</p>
+      <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" class="certificate-link">🔗 View Certificate</a>
+      <img src="udacityimg.jpg" alt="Udacity Certificate" class="certificate-img single-certificate" />
+    </div>
+    
+    <div class="experience-card fade-in-up">
+      <h4 class="experience-title">Recommendations</h4>
+      <p class="experience-subtitle">Feedback and endorsements for my work in Leadstar academy IT club.</p>
+      <a href="recomendations.pdf" target="_blank" class="primary-button small-button">
+        📄 View Recommendation
+      </a>
+    </div>
+    
+  </div>
+</section>
 
-    <div id="imageModal" class="modal" onclick="closeModal()">
+
+
+    <div id="imageModal" class="modal">
       <img id="modalImg" src="" alt="Expanded certificate" class="modal-image" />
     </div>
 
@@ -196,11 +200,11 @@
         <p class="contact-description">Have a project in mind or want to discuss potential opportunities? Feel free to reach out through any of these channels.</p>
         
         <div class="contact-links">
-          <a href="mailto:KumaTsegae@gmail.com" class="contact-link">
+          <a href="mailto:kumatsegaye1530@gmail.com" class="contact-link">
             <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
-            <span>KumaTsegae@gmail.com</span>
+            <span>kumatsegaye1530@gmail.com</span>
           </a>
 
           <a href="tel:+251995766839" class="contact-link">
