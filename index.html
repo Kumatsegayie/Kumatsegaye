@@ -5,199 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kuma Tsegaye Portfolio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    
-    .upwork-gradient {
-      background: linear-gradient(135deg, #14a800 0%, #2b6cb0 100%);
-    }
-    
-    .upwork-light {
-      background-color: #f8fafc;
-    }
-    
-    .upwork-dark {
-      background-color: #0f172a;
-    }
-    
-    .upwork-card {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-      border: 1px solid #e2e8f0;
-    }
-    
-    .upwork-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .dark .upwork-card {
-      background: #1e293b;
-      border-color: #334155;
-    }
-    
-    .upwork-nav {
-      background: white;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    }
-    
-    .dark .upwork-nav {
-      background: #0f172a;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-    
-    .upwork-btn {
-      background-color: #14a800;
-      color: white;
-      font-weight: 600;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-    }
-    
-    .upwork-btn:hover {
-      background-color: #0f8300;
-      transform: translateY(-1px);
-    }
-    
-    .upwork-text-primary {
-      color: #14a800;
-    }
-    
-    .dark .upwork-text-primary {
-      color: #4ade80;
-    }
-    
-    .upwork-border-primary {
-      border-color: #14a800;
-    }
-    
-    .dark .upwork-border-primary {
-      border-color: #4ade80;
-    }
-    
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 50;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .modal img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      transition: opacity 0.3s ease-in-out;
-    }
-    
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    
-    .fade-in-up.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .project-card {
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .project-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(20, 168, 0, 0.8);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .project-card:hover .project-overlay {
-      opacity: 1;
-    }
-    
-    .skill-badge {
-      background-color: #e2f5e0;
-      color: #14a800;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 500;
-    }
-    
-    .dark .skill-badge {
-      background-color: #1a3a1e;
-      color: #86efac;
-    }
-    
-    .theme-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #f1f5f9;
-      color: #64748b;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .dark .theme-toggle {
-      background: #1e293b;
-      color: #e2e8f0;
-    }
-    
-    .theme-toggle:hover {
-      transform: scale(1.1);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="upwork-light dark:upwork-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
-
-  <nav class="upwork-nav flex justify-between items-center p-4 sticky top-0 z-40 fade-in-up">
-    <div class="flex items-center space-x-3 max-w-6xl mx-auto w-full">
-      <img src="favicon.png" alt="Kuma Tsegaye Logo" class="w-8 h-8 rounded" />
-      <h1 class="text-xl font-bold">Kuma Tsegaye</h1>
-      <div class="hidden md:flex ml-auto space-x-6 items-center">
-        <a href="#about" class="hover:text-green-600 dark:hover:text-green-400 transition">About</a>
-        <a href="#projects" class="hover:text-green-600 dark:hover:text-green-400 transition">Projects</a>
-        <a href="#experience" class="hover:text-green-600 dark:hover:text-green-400 transition">Experience</a>
-        <a href="#contact" class="hover:text-green-600 dark:hover:text-green-400 transition">Contact</a>
-        <button id="themeToggle" class="theme-toggle ml-4">
-          <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+<body class="light-theme">
+  <nav class="nav">
+    <div class="nav-container">
+      <img src="favicon.png" alt="Kuma Tsegaye Logo" class="logo-img" />
+      <h1 class="logo-text">Kuma Tsegaye</h1>
+      <div class="desktop-nav">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button id="themeToggle" class="theme-toggle">
+          <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="theme-icon" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
           </svg>
-          <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+          <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="theme-icon hidden" viewBox="0 0 20 20" fill="currentColor">
             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
           </svg>
         </button>
       </div>
-      <button id="mobileMenuButton" class="md:hidden ml-auto">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button id="mobileMenuButton" class="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
@@ -205,52 +36,51 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-30 p-4 pt-20">
-    <div class="flex flex-col space-y-6 text-center">
-      <a href="#about" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">About</a>
-      <a href="#projects" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">Projects</a>
-      <a href="#experience" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">Experience</a>
-      <a href="#contact" class="text-lg hover:text-green-600 dark:hover:text-green-400 transition">Contact</a>
-      <button id="mobileThemeToggle" class="theme-toggle mx-auto mt-4">
-        <svg id="mobileSunIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+  <div id="mobileMenu" class="mobile-menu hidden">
+    <div class="mobile-menu-content">
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#projects" class="mobile-nav-link">Projects</a>
+      <a href="#experience" class="mobile-nav-link">Experience</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+      <button id="mobileThemeToggle" class="theme-toggle mobile-theme-toggle">
+        <svg id="mobileSunIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
         </svg>
-        <svg id="mobileMoonIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" viewBox="0 0 20 20" fill="currentColor">
+        <svg id="mobileMoonIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon hidden" viewBox="0 0 20 20" fill="currentColor">
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
         </svg>
       </button>
-      <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-600 dark:text-gray-300">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button id="closeMobileMenu" class="close-mobile-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
   </div>
 
-  <main class="max-w-6xl mx-auto px-4">
-    <section class="text-center py-16 md:py-24 fade-in-up">
-      <div class="upwork-gradient text-white p-8 rounded-xl max-w-2xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4">Hey there, I'm Kuma Tsegaye</h2>
-        <p class="text-xl mb-6">Entrepreneur, CPO @ Nuner Rentals & Front-End Developer</p>
-        <a href="#contact" class="upwork-btn inline-block px-6 py-3 rounded-md">
+  <main class="main-container">
+    <section class="hero-section fade-in-up">
+      <div class="hero-gradient">
+        <h2 class="hero-title">Hey there, I'm Kuma Tsegaye</h2>
+        <p class="hero-subtitle">Entrepreneur, CPO @ Nuner Rentals & Front-End Developer</p>
+        <a href="#contact" class="primary-button">
           Contact Me
         </a>
       </div>
     </section>
 
-    <section id="about" class="py-12 fade-in-up">
-      <div class="upwork-card p-8">
-        <div class="flex flex-col md:flex-row items-center">
-          <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8">
-            <img src="profilepic.png" alt="Kuma Tsegaye Profile Photo"
-                 class="w-40 h-40 md:w-52 md:h-52 rounded-full shadow-lg border-4 border-green-500 dark:border-green-400 object-cover" />
+    <section id="about" class="section fade-in-up">
+      <div class="card">
+        <div class="about-container">
+          <div class="profile-img-container">
+            <img src="profilepic.png" alt="Kuma Tsegaye Profile Photo" class="profile-img" />
           </div>
-          <div>
-            <h3 class="text-3xl font-semibold mb-4 pb-2 border-b-2 upwork-border-primary inline-block">About Me</h3>
-            <p id="about-text" class="text-lg leading-relaxed mb-4 text-gray-700 dark:text-gray-300">
+          <div class="about-content">
+            <h3 class="section-title">About Me</h3>
+            <p id="about-text" class="about-text">
               I'm a front-end developer and Entrepreneur based in Ethiopia. As the Chief Product Officer (CPO) of Nuner, a rental platform for houses and cars, I combine technical expertise with product leadership. My front-end development skills in HTML, CSS, JavaScript, and Tailwind enable me to build real projects while my entrepreneurial mindset drives innovation and growth.
             </p>
-            <div class="flex flex-wrap gap-2">
+            <div class="skills-container">
               <span class="skill-badge">HTML</span>
               <span class="skill-badge">CSS</span>
               <span class="skill-badge">JavaScript</span>
@@ -263,19 +93,19 @@
       </div>
     </section>
 
-    <section id="projects" class="py-12 fade-in-up">
-      <h3 class="text-3xl font-semibold mb-6 pb-2 border-b-2 upwork-border-primary inline-block">My Projects</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="project-card upwork-card p-6 h-full" onclick="window.open('https://nuner.x10.mx', '_blank')">
-          <div class="relative h-40 mb-4 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
+    <section id="projects" class="section fade-in-up">
+      <h3 class="section-title">My Projects</h3>
+      <div class="projects-grid">
+        <div class="project-card card" onclick="window.open('https://nuner.x10.mx', '_blank')">
+          <div class="project-image-container">
             <div class="project-overlay">
-              <span class="text-lg font-bold">Visit Project</span>
-              <span class="text-sm">nuner.x10.mx</span>
+              <span class="project-overlay-title">Visit Project</span>
+              <span class="project-overlay-subtitle">nuner.x10.mx</span>
             </div>
           </div>
-          <h4 class="text-xl font-bold mb-2">Nuner Rentals</h4>
-          <p class="text-gray-600 dark:text-gray-300 mb-3">As Entrepreneur and Chief Product Officer (CPO), I'm driving the vision, operations, and growth of Nuner - a rental platform for houses and cars.</p>
-          <div class="flex flex-wrap gap-2">
+          <h4 class="project-title">Nuner Rentals</h4>
+          <p class="project-description">As Entrepreneur and Chief Product Officer (CPO), I'm driving the vision, operations, and growth of Nuner - a rental platform for houses and cars.</p>
+          <div class="project-skills">
             <span class="skill-badge">HTML</span>
             <span class="skill-badge">JavaScript</span>
             <span class="skill-badge">PHP</span>
@@ -283,31 +113,31 @@
           </div>
         </div>
 
-        <div class="project-card upwork-card p-6 h-full" onclick="window.open('https://exploromia.netlify.app', '_blank')">
-          <div class="relative h-40 mb-4 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
+        <div class="project-card card" onclick="window.open('https://exploromia.netlify.app', '_blank')">
+          <div class="project-image-container">
             <div class="project-overlay">
-              <span class="text-lg font-bold">Visit Project</span>
-              <span class="text-sm">exploromia.netlify.app</span>
+              <span class="project-overlay-title">Visit Project</span>
+              <span class="project-overlay-subtitle">exploromia.netlify.app</span>
             </div>
           </div>
-          <h4 class="text-xl font-bold mb-2">Exploromia</h4>
-          <p class="text-gray-600 dark:text-gray-300 mb-3">A tourism web promoting Oromia's beauty, currently under development to showcase the region's attractions.</p>
-          <div class="flex flex-wrap gap-2">
+          <h4 class="project-title">Exploromia</h4>
+          <p class="project-description">A tourism web promoting Oromia's beauty, currently under development to showcase the region's attractions.</p>
+          <div class="project-skills">
             <span class="skill-badge">HTML</span>
             <span class="skill-badge">CSS</span>
             <span class="skill-badge">JavaScript</span>
           </div>
         </div>
 
-        <div class="project-card upwork-card p-6 h-full">
-          <div class="relative h-40 mb-4 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
+        <div class="project-card card">
+          <div class="project-image-container">
             <div class="project-overlay">
-              <span class="text-lg font-bold">Coming Soon</span>
+              <span class="project-overlay-title">Coming Soon</span>
             </div>
           </div>
-          <h4 class="text-xl font-bold mb-2">Taxi-mate</h4>
-          <p class="text-gray-600 dark:text-gray-300 mb-3">Transportation services in Shashamene, currently under development to provide efficient taxi services.</p>
-          <div class="flex flex-wrap gap-2">
+          <h4 class="project-title">Taxi-mate</h4>
+          <p class="project-description">Transportation services in Shashamene, currently under development to provide efficient taxi services.</p>
+          <div class="project-skills">
             <span class="skill-badge">HTML</span>
             <span class="skill-badge">Tailwind</span>
             <span class="skill-badge">JavaScript</span>
@@ -317,97 +147,97 @@
       </div>
     </section>
 
-    <section id="experience" class="py-12 fade-in-up">
-      <h3 class="text-3xl font-semibold mb-6 pb-2 border-b-2 upwork-border-primary inline-block">Experience & Certificates</h3>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="upwork-card p-6 fade-in-up">
-          <h4 class="text-xl font-bold mb-2">Leadstar Certificates</h4>
-          <p class="text-sm mb-4 text-gray-600 dark:text-gray-300">IT member, Leader & Programming Lecturer</p>
-          <div class="flex gap-3 flex-wrap">
-            <img src="IMG_20250628_115425_802.jpg" alt="Leadstar Certificate 1" class="rounded shadow cursor-pointer w-full h-48 object-cover" onclick="openModal(this.src)" />
-            <img src="ITcertificate.jpg" alt="Leadstar Certificate 2" class="rounded shadow cursor-pointer w-full h-48 object-cover" onclick="openModal(this.src)" />
-            <img src="ITcertificate2.jpg" alt="Leadstar Certificate 3" class="rounded shadow cursor-pointer w-full h-48 object-cover" onclick="openModal(this.src)" />
+    <section id="experience" class="section fade-in-up">
+      <h3 class="section-title">Experience & Certificates</h3>
+      <div class="experience-grid">
+        <div class="card fade-in-up">
+          <h4 class="experience-title">Leadstar Certificates</h4>
+          <p class="experience-subtitle">IT member, Leader & Programming Lecturer</p>
+          <div class="certificate-images">
+            <img src="IMG_20250628_115425_802.jpg" alt="Leadstar Certificate 1" class="certificate-img" onclick="openModal(this.src)" />
+            <img src="ITcertificate.jpg" alt="Leadstar Certificate 2" class="certificate-img" onclick="openModal(this.src)" />
+            <img src="ITcertificate2.jpg" alt="Leadstar Certificate 3" class="certificate-img" onclick="openModal(this.src)" />
           </div>
         </div>
         
-        <div class="upwork-card p-6 fade-in-up">
-          <h4 class="text-xl font-bold mb-2">Benchmark Leadership Certificate</h4>
-          <p class="text-sm mb-4 text-gray-600 dark:text-gray-300">Outstanding leadership & initiative</p>
-          <img src="Benchmarkcertificate.jpg" alt="Benchmark Leadership Certificate" class="rounded shadow cursor-pointer w-full h-48 object-cover" onclick="openModal(this.src)" />
+        <div class="card fade-in-up">
+          <h4 class="experience-title">Benchmark Leadership Certificate</h4>
+          <p class="experience-subtitle">Outstanding leadership & initiative</p>
+          <img src="Benchmarkcertificate.jpg" alt="Benchmark Leadership Certificate" class="certificate-img single-certificate" onclick="openModal(this.src)" />
         </div>
         
-        <div class="upwork-card p-6 fade-in-up">
-          <h4 class="text-xl font-bold mb-2">Udacity Programming Foundations</h4>
-          <p class="text-sm mb-2 text-gray-600 dark:text-gray-300">Udacity Nanodegree Certificate</p>
-          <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" class="upwork-text-primary hover:underline text-sm inline-block mb-3">🔗 View Certificate</a>
-          <img src="udacityimg.jpg" alt="Udacity Certificate" class="rounded shadow cursor-pointer w-full h-48 object-cover" onclick="openModal(this.src)" />
+        <div class="card fade-in-up">
+          <h4 class="experience-title">Udacity Programming Foundations</h4>
+          <p class="experience-subtitle">Udacity Nanodegree Certificate</p>
+          <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" class="certificate-link">🔗 View Certificate</a>
+          <img src="udacityimg.jpg" alt="Udacity Certificate" class="certificate-img single-certificate" onclick="openModal(this.src)" />
         </div>
         
-        <div class="upwork-card p-6 fade-in-up">
-          <h4 class="text-xl font-bold mb-2">Recommendations</h4>
-          <p class="text-sm mb-4 text-gray-600 dark:text-gray-300">Feedback and endorsements for my work in Leadstar academy IT club.</p>
-          <a href="recomendations.pdf" target="_blank" class="upwork-btn inline-block px-4 py-2 text-sm">
+        <div class="card fade-in-up">
+          <h4 class="experience-title">Recommendations</h4>
+          <p class="experience-subtitle">Feedback and endorsements for my work in Leadstar academy IT club.</p>
+          <a href="recomendations.pdf" target="_blank" class="primary-button small-button">
             📄 View Recommendation
           </a>
         </div>
       </div>
     </section>
 
-    <div id="imageModal" class="modal fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50" onclick="closeModal()">
-      <img id="modalImg" src="" alt="Expanded certificate" class="max-w-[90%] max-h-[90%] rounded shadow-lg" />
+    <div id="imageModal" class="modal" onclick="closeModal()">
+      <img id="modalImg" src="" alt="Expanded certificate" class="modal-image" />
     </div>
 
-    <section id="contact" class="py-12 fade-in-up">
-      <div class="upwork-card p-8 text-center">
-        <h3 class="text-3xl font-semibold mb-6 pb-2 border-b-2 upwork-border-primary inline-block">Get In Touch</h3>
-        <p class="mb-8 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Have a project in mind or want to discuss potential opportunities? Feel free to reach out through any of these channels.</p>
+    <section id="contact" class="section fade-in-up">
+      <div class="card contact-card">
+        <h3 class="section-title">Get In Touch</h3>
+        <p class="contact-description">Have a project in mind or want to discuss potential opportunities? Feel free to reach out through any of these channels.</p>
         
-        <div class="flex flex-wrap justify-center gap-6">
-          <a href="mailto:KumaTsegae@gmail.com" class="flex items-center space-x-2 upwork-text-primary hover:underline">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <div class="contact-links">
+          <a href="mailto:KumaTsegae@gmail.com" class="contact-link">
+            <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
             <span>KumaTsegae@gmail.com</span>
           </a>
 
-          <a href="tel:+251995766839" class="flex items-center space-x-2 upwork-text-primary hover:underline">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <a href="tel:+251995766839" class="contact-link">
+            <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h1.28a2 2 0 011.8 1.1l1.6 3.2a2 2 0 01-.45 2.4l-1.2 1.2a16.001 16.001 0 006.36 6.36l1.2-1.2a2 2 0 012.4-.45l3.2 1.6a2 2 0 011.1 1.8V19a2 2 0 01-2 2h-.5C9.611 21 3 14.389 3 6.5V6a1 1 0 010-.17z"/>
             </svg>
             <span>+251 995 766 839</span>
           </a>
 
-          <a href="https://t.me/kumatsegaye" target="_blank" class="flex items-center space-x-2 upwork-text-primary hover:underline">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <a href="https://t.me/kumatsegaye" target="_blank" class="contact-link">
+            <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9.993 16.443l-.385 3.742c.55 0 .787-.236 1.07-.52l2.567-2.462 5.32 3.916c.974.537 1.67.256 1.915-.9L23.958 4.2c.312-1.65-.605-2.312-1.575-1.927L1.84 9.396c-1.615.623-1.6 1.51-.276 1.926l5.592 1.744 13.012-8.2c.613-.366 1.174-.164.713.229L9.993 16.443z"/>
             </svg>
             <span>@kumatsegaye</span>
           </a>
         </div>
 
-        <div class="flex justify-center space-x-6 mt-8">
-          <a href="https://github.com/Kumatsegayie" target="_blank" aria-label="GitHub" class="text-gray-700 dark:text-gray-300 hover:upwork-text-primary transition">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+        <div class="social-icons">
+          <a href="https://github.com/Kumatsegayie" target="_blank" aria-label="GitHub" class="social-icon">
+            <svg class="social-icon-svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0a12 12 0 00-3.793 23.4c.6.112.82-.262.82-.582 0-.287-.01-1.045-.015-2.052-3.338.726-4.042-1.613-4.042-1.613-.546-1.387-1.332-1.757-1.332-1.757-1.089-.745.084-.73.084-.73 1.205.084 1.838 1.236 1.838 1.236 1.07 1.833 2.806 1.304 3.492.996.108-.774.418-1.304.76-1.604-2.665-.304-5.466-1.334-5.466-5.93 0-1.31.47-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.495 11.495 0 013.003-.404 11.5 11.5 0 013.003.404c2.29-1.552 3.297-1.23 3.297-1.23.654 1.653.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.803 5.624-5.475 5.92.43.372.813 1.102.813 2.222 0 1.604-.015 2.896-.015 3.286 0 .322.216.698.825.58A12 12 0 0012 0z"/>
             </svg>
           </a>
 
-          <a href="https://www.linkedin.com/in/kumatsegaye" target="_blank" aria-label="LinkedIn" class="text-gray-700 dark:text-gray-300 hover:upwork-text-primary transition">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <a href="https://www.linkedin.com/in/kumatsegaye" target="_blank" aria-label="LinkedIn" class="social-icon">
+            <svg class="social-icon-svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.452 20.452h-3.554v-5.569c0-1.328-.026-3.037-1.85-3.037-1.85 0-2.132 1.444-2.132 2.937v5.669H9.366V9h3.414v1.561h.047c.476-.9 1.637-1.849 3.369-1.849 3.602 0 4.266 2.37 4.266 5.448v6.292zM5.337 7.433a2.07 2.07 0 11.002-4.14 2.07 2.07 0 01-.002 4.14zM6.97 20.452H3.7V9h3.27v11.452z"/>
             </svg>
           </a>
 
-          <a href="https://instagram.com/kuma_tsegaye" target="_blank" aria-label="Instagram" class="text-gray-700 dark:text-gray-300 hover:upwork-text-primary transition">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <a href="https://instagram.com/kuma_tsegaye" target="_blank" aria-label="Instagram" class="social-icon">
+            <svg class="social-icon-svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
               <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
               <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
             </svg>
           </a>
 
-          <a href="https://www.facebook.com/kumatsegayie" target="_blank" aria-label="Facebook" class="text-gray-700 dark:text-gray-300 hover:upwork-text-primary transition">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <a href="https://www.facebook.com/kumatsegayie" target="_blank" aria-label="Facebook" class="social-icon">
+            <svg class="social-icon-svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M22 12.073C22 6.486 17.523 2 12.06 2S2 6.486 2 12.073c0 5.022 3.657 9.175 8.438 9.925v-7.025h-2.54v-2.9h2.54v-2.21c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.196 2.238.196v2.464h-1.26c-1.243 0-1.63.771-1.63 1.562v1.878h2.773l-.443 2.9h-2.33v7.025C18.343 21.248 22 17.095 22 12.073z"/>
             </svg>
           </a>
@@ -416,138 +246,10 @@
     </section>
   </main>
 
-  <footer class="py-6 text-center text-gray-600 dark:text-gray-400 text-sm border-t border-gray-200 dark:border-gray-700">
-    <p>© 2023 Kuma Tsegaye. All rights reserved.</p>
+  <footer class="footer">
+    <p>© 2025 Kuma Tsegaye. All rights reserved.</p>
   </footer>
 
-<script>
-  // Theme toggle functionality
-  const themeToggle = document.getElementById('themeToggle');
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-  const sunIcon = document.getElementById('sunIcon');
-  const moonIcon = document.getElementById('moonIcon');
-  const mobileSunIcon = document.getElementById('mobileSunIcon');
-  const mobileMoonIcon = document.getElementById('mobileMoonIcon');
-  
-  // Check for saved theme preference or use system preference
-  const currentTheme = localStorage.getItem('theme') || 
-                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  
-  // Apply the current theme
-  if (currentTheme === 'dark') {
-    document.documentElement.classList.add('dark');
-    sunIcon.classList.add('hidden');
-    moonIcon.classList.remove('hidden');
-    mobileSunIcon.classList.add('hidden');
-    mobileMoonIcon.classList.remove('hidden');
-  } else {
-    document.documentElement.classList.remove('dark');
-    sunIcon.classList.remove('hidden');
-    moonIcon.classList.add('hidden');
-    mobileSunIcon.classList.remove('hidden');
-    mobileMoonIcon.classList.add('hidden');
-  }
-  
-  // Toggle theme
-  function toggleTheme() {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      sunIcon.classList.remove('hidden');
-      moonIcon.classList.add('hidden');
-      mobileSunIcon.classList.remove('hidden');
-      mobileMoonIcon.classList.add('hidden');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      sunIcon.classList.add('hidden');
-      moonIcon.classList.remove('hidden');
-      mobileSunIcon.classList.add('hidden');
-      mobileMoonIcon.classList.remove('hidden');
-    }
-  }
-  
-  // Add event listeners
-  themeToggle.addEventListener('click', toggleTheme);
-  mobileThemeToggle.addEventListener('click', toggleTheme);
-  
-  // Mobile menu functionality
-  const mobileMenuButton = document.getElementById('mobileMenuButton');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const closeMobileMenu = document.getElementById('closeMobileMenu');
-  
-  mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-  });
-  
-  closeMobileMenu.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-  });
-  
-  // Close mobile menu when clicking on a link
-  document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-    });
-  });
-
-  // Age calculation
-  function calculateAge(birthMonth, birthDay, birthYear) {
-    const today = new Date();
-    let age = today.getFullYear() - birthYear;
-    const m = today.getMonth() + 1;
-    const d = today.getDate();
-    if (m < birthMonth || (m === birthMonth && d < birthDay)) {
-      age--;
-    }
-    return age;
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const age = calculateAge(4, 27, 2006);
-    const about = document.getElementById("about-text");
-    about.innerHTML = `I'm a <strong>${age}-year-old</strong> front-end developer and <strong>Entrepreneur</strong> based in Ethiopia. As the <strong>Chief Product Officer (CPO)</strong> of Nuner, a rental platform for houses and cars, I combine technical expertise with product leadership. My front-end development skills in HTML, CSS, JavaScript, and Tailwind enable me to build real projects while my entrepreneurial mindset drives innovation and growth.`;
-    
-    // Initialize modal as hidden
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-  });
-
-  function openModal(src) {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImg");
-    modalImg.src = src;
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-    
-    document.querySelector('.modal-content')?.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
-
-  function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-    document.body.style.overflow = "auto";
-    document.getElementById("modalImg").src = "";
-  }
-  
-  document.getElementById("imageModal").addEventListener("click", function(e) {
-    if (e.target === this) {
-      closeModal();
-    }
-  });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
