@@ -729,3 +729,18 @@ p {
   opacity: 1;
   transform: none;
 }
+
+
+#people .project-image-container {
+  background: none; /* remove any background color or image */
+  padding: 0;       /* remove extra space that makes it look like a banner */
+}
+
+#people .project-image {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+}
