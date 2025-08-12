@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (aboutText) {
     const age = calculateAge(4, 27, 2006);
-    aboutText.innerHTML = `<strong>front-end developer</strong> and <strong>Entrepreneur</strong> based in Ethiopia. As the <strong>Chief Product Officer (CPO)</strong> of Nuner, a rental platform for houses and cars, I combine technical expertise with product leadership. My <strong>front-end development</strong> skills in HTML, CSS, JavaScript, and Tailwind enable me to build real projects while my entrepreneurial mindset drives innovation and growth.`;
+    aboutText.innerHTML = `I'm a <strong>front-end developer</strong> and <strong>Entrepreneur</strong> based in Ethiopia. As the <strong>Chief Product Officer (CPO)</strong> of Nuner, a rental platform for houses and cars, I combine technical expertise with product leadership. My <strong>front-end development</strong> skills in HTML, CSS, JavaScript, and Tailwind enable me to build real projects while my entrepreneurial mindset drives innovation and growth.`;
   }
 
   /* ---------------------------
@@ -176,5 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.openModal = openModal;
   window.closeModal = closeModal;
 });
+
 
 
