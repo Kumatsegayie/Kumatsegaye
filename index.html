@@ -36,27 +36,29 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu hidden">
-    <div class="mobile-menu-content">
-      <a href="#about" class="mobile-nav-link">About</a>
-      <a href="#projects" class="mobile-nav-link">Projects</a>
-      <a href="#experience" class="mobile-nav-link">Experience</a>
-      <a href="#contact" class="mobile-nav-link">Contact</a>
-      <button id="mobileThemeToggle" class="theme-toggle mobile-theme-toggle">
-        <svg id="mobileSunIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
-        </svg>
-        <svg id="mobileMoonIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon hidden" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-        </svg>
-      </button>
-      <button id="closeMobileMenu" class="close-mobile-menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
+<div id="mobileMenu" class="mobile-menu hidden" aria-hidden="true">
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-content" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#experience" class="mobile-nav-link">Experience</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <button id="mobileThemeToggle" class="theme-toggle mobile-theme-toggle" aria-label="Toggle theme">
+      <svg id="mobileSunIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+      </svg>
+      <svg id="mobileMoonIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon hidden" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+      </svg>
+    </button>
+    <button id="closeMobileMenu" class="close-mobile-menu" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
   </div>
+</div>
+
 
   <main class="main-container">
     <section class="hero-section fade-in-up">
@@ -150,6 +152,68 @@
       </div>
     </section>
 
+<section id="people" class="section fade-in-up">
+  <h3 class="section-title">People I Worked Together</h3>
+  <div class="projects-grid">
+    
+   
+<div class="project-card card">
+  <div class="project-image-container">
+    <img src="feyu.jpg" alt="John Doe" class="project-image" />
+  </div>
+  <h4 class="project-title">Feyisa Mustefa Koshe </h4>
+  <p class="project-description">
+    We co-founded Nuner and worked side by side to build the web platform. As Nuner’s Chief Technology Officer, he leads the tech vision and strategy. Our collaboration continues to this day, as we keep creating and improving together.
+  </p>
+  <a href="https://t.me/Feyumustefa" class="primary-button small-button">Contact</a>
+</div>
+
+
+    
+<div class="project-card card">
+  <div class="project-image-container">
+    <img src="nasir.jpg" alt="Nasir Aman Churiso" class="project-image" />
+  </div>
+  <h4 class="project-title">Nasir Aman Churiso</h4>
+  <p class="project-description">
+    We co-founded Nuner and built the platform from the ground up. As Nuner’s Chief Executive Officer, he guides the vision, growth, and leadership of the company. Our collaboration continues to this day, driving forward new projects and innovations together.
+  </p>
+  <a href="https://t.me/NAAS9O" class="primary-button small-button">Contact</a>
+</div>
+
+
+    <!-- Person: Yosen Tadele Negash -->
+<div class="project-card card">
+  <div class="project-image-container">
+    <img src="https://avatar.iran.liara.run/public/boy" alt="Yosen Tadele Negash" class="project-image" />
+  </div>
+
+  <h4 class="project-title">Yosen Tadele Negash</h4>
+  <p class="project-description">
+    We worked together on Exploromia, handling every aspect of the project side by side — from concept to final deployment. It was a true all-hands collaboration, where we both shared the workload equally and brought the vision to life.
+  </p>
+  <a href="https://t.me/lil_thunder" class="primary-button small-button">Contact</a>
+</div>
+
+
+   <!-- Person: Firehiwot Eshetu -->
+<div class="project-card card">
+  <div class="project-image-container">
+    <img src="https://avatar.iran.liara.run/public/girl" alt="Firehiwot Eshetu" class="project-image" />
+  </div>
+
+  <h4 class="project-title">Firehiwot Eshetu</h4>
+  <p class="project-description">
+    We co-founded FK-Power Studios, building websites for clients and delivering creative digital solutions. It was an incredible journey where we combined our skills, grew our expertise, and achieved success together.
+  </p>
+  <a href="https://t.me/FehHoh" class="primary-button small-button">Contact</a>
+</div>
+
+
+  </div>
+</section>
+
+    
    <section id="experience" class="section fade-in-up">
   <h3 class="section-title">Experience & Certificates</h3>
   <div class="experience-grid">
