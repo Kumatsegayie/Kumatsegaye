@@ -648,13 +648,23 @@
         transform:translateY(0);
         pointer-events:auto;
       }
-      .people-carousel-shell{grid-template-columns:36px 1fr 36px;gap:8px}
+      .people-carousel-shell{
+        grid-template-columns:1fr;
+        gap:0;
+        position:relative;
+      }
       .people-nav{
         display:grid;
+        position:absolute;
+        top:50%;
+        transform:translateY(-50%);
+        z-index:4;
         width:36px;
         height:36px;
         font-size:.95rem;
       }
+      #peoplePrev{left:6px}
+      #peopleNext{right:6px}
       .people-track{padding:8px 0}
       .testimonial-card{flex:0 0 min(330px,86vw)}
     }
@@ -699,12 +709,14 @@
       .brand span{font-size:.95rem}
       h1{font-size:clamp(1.6rem,8vw,2.2rem)}
       .mobile a{font-size:.72rem;padding:9px 6px}
-      .people-carousel-shell{grid-template-columns:32px 1fr 32px;gap:6px}
+      .people-carousel-shell{grid-template-columns:1fr;gap:0}
       .people-nav{
         width:32px;
         height:32px;
         font-size:.9rem;
       }
+      #peoplePrev{left:4px}
+      #peopleNext{right:4px}
       .people-track{gap:12px}
       .testimonial-card{flex:0 0 min(300px,84vw)}
     }
