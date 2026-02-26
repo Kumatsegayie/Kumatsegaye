@@ -1,316 +1,1097 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kuma Tsegaye Portfolio</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f5fbf7;
+      --bg2:#ebf5ef;
+      --ink:#173528;
+      --muted:#4a6858;
+      --green:#1f6d49;
+      --green2:#145337;
+      --panel:rgba(255,255,255,.78);
+      --glass:rgba(255,255,255,.72);
+      --edge:rgba(19,83,55,.2);
+      --shadow:0 16px 36px rgba(20,64,44,.14);
+      --r:20px;
+      --w:min(1100px,92vw);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Manrope",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(760px 420px at 8% -10%,rgba(29,108,73,.15),transparent 70%),
+        radial-gradient(700px 380px at 95% -15%,rgba(18,91,58,.14),transparent 70%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      min-height:100vh;
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .hidden{display:none!important}
+    .wrap{width:var(--w);margin-inline:auto}
+    .glass{
+      background:var(--glass);
+      border:1px solid var(--edge);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+    }
+    .top{
+      position:sticky;
+      top:14px;
+      z-index:20;
+      margin-top:14px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 14px;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-family:"Sora",sans-serif;
+      font-weight:800;
+      color:var(--green2);
+    }
+    .logo-img{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid var(--edge);
+      background:#edf7f1;
+      flex-shrink:0;
+    }
+    .dot{
+      width:11px;height:11px;border-radius:50%;
+      background:linear-gradient(130deg,#2d8a5e,#134e34);
+      box-shadow:0 0 0 5px rgba(31,109,73,.18);
+    }
+    .links{display:flex;gap:8px}
+    .links a{
+      padding:9px 13px;
+      border-radius:999px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:.93rem;
+    }
+    .links a:hover{background:rgba(31,109,73,.12);color:var(--green2)}
+    .top-tools{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .mobile{
+      display:none;
+      margin-top:8px;
+      border-radius:18px;
+      padding:8px;
+      gap:6px;
+    }
+    .mobile a{
+      display:block;
+      padding:10px 12px;
+      border-radius:10px;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .mobile a:hover{background:rgba(31,109,73,.12);color:var(--green2)}
+    main{padding:68px 0 46px}
+    .hero{
+      border-radius:28px;
+      padding:clamp(22px,3vw,40px);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+      margin-bottom:22px;
+    }
+    .profile-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:8px;
+    }
+    .profile-pic{
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      padding:4px;
+      background:linear-gradient(145deg,#2b855b,#145337);
+      box-shadow:0 10px 22px rgba(18,72,48,.25);
+      flex-shrink:0;
+    }
+    .profile-pic img{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,.85);
+      display:block;
+      background:#e6f1eb;
+    }
+    .profile-name{
+      font-family:"Sora",sans-serif;
+      font-weight:700;
+      color:#145337;
+      font-size:.96rem;
+    }
+    .kicker{color:var(--green);font-size:.87rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{
+      margin-top:8px;
+      font-family:"Sora",sans-serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1.1;
+      color:#113828;
+      text-shadow:0 8px 24px rgba(17,57,38,.16);
+    }
+    .lead{margin-top:12px;color:var(--muted);max-width:58ch}
+    .chips{
+      margin-top:16px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .chip{
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid rgba(21,84,56,.2);
+      background:rgba(255,255,255,.8);
+      color:#165439;
+      font-weight:700;
+      font-size:.82rem;
+    }
+    .actions{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      padding:11px 16px;
+      border-radius:11px;
+      font-weight:800;
+      font-size:.9rem;
+      transition:.2s ease;
+    }
+    .btn.primary{
+      color:#f6fff9;
+      background:linear-gradient(145deg,#257a53,#17583b);
+      box-shadow:0 10px 20px rgba(24,79,54,.28);
+    }
+    .btn.ghost{
+      color:#1a5e40;
+      border:1px solid rgba(22,88,58,.2);
+      background:rgba(255,255,255,.7);
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .side{display:grid;gap:10px}
+    .mini{border-radius:14px;padding:14px}
+    .mini h3{font-family:"Sora",sans-serif;font-size:1rem;color:#17573a}
+    .mini p{margin-top:6px;color:var(--muted);font-size:.92rem}
+    section{margin:30px 0}
+    .head{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      margin-bottom:18px;
+    }
+    h2{
+      font-family:"Sora",sans-serif;
+      color:var(--green2);
+      font-size:clamp(1.35rem,2.4vw,2rem);
+      text-shadow:0 7px 18px rgba(19,64,43,.14);
+    }
+    .about{
+      border-radius:var(--r);
+      padding:18px;
+      color:#335849;
+      box-shadow:var(--shadow);
+    }
+    .about-layout{
+      display:grid;
+      grid-template-columns:200px 1fr;
+      gap:16px;
+      align-items:start;
+    }
+    .about-pic-wrap{
+      border-radius:14px;
+      border:1px solid var(--edge);
+      padding:10px;
+      background:var(--panel);
+    }
+    .about-pic{
+      width:100%;
+      aspect-ratio:1/1;
+      border-radius:50%;
+      object-fit:cover;
+      display:block;
+      border:3px solid rgba(255,255,255,.85);
+      box-shadow:0 10px 22px rgba(17,70,47,.24);
+      background:#e6f2eb;
+    }
+    .about-copy{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .skills-list{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .skill-badge{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(24,90,61,.2);
+      background:rgba(255,255,255,.84);
+      color:#1a583c;
+      font-size:.76rem;
+      font-weight:700;
+    }
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+    .card{
+      border-radius:14px;
+      padding:16px;
+      display:grid;
+      gap:12px;
+      box-shadow:var(--shadow);
+      transition:.2s ease;
+    }
+    .project-route{
+      cursor:pointer;
+    }
+    .media{
+      width:100%;
+      aspect-ratio:16/8.5;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(20,85,57,.2);
+      background:#e5f2eb;
+    }
+    .media.portrait{aspect-ratio:4/2.8}
+    .media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .person-modal-img{
+      cursor:pointer;
+    }
+    .card:hover{transform:translateY(-3px)}
+    .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .card h3{font-family:"Sora",sans-serif;font-size:.98rem;color:#16573a}
+    .badge{
+      border-radius:999px;
+      padding:4px 9px;
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      color:#1d6544;
+      border:1px solid rgba(26,97,67,.2);
+      background:rgba(255,255,255,.82);
+    }
+    .card p{font-size:.88rem;color:#496658}
+    .tags{display:flex;gap:7px;flex-wrap:wrap}
+    .tag{
+      font-size:.73rem;
+      padding:5px 8px;
+      border-radius:999px;
+      border:1px solid rgba(25,89,60,.2);
+      color:#1a573b;
+      background:rgba(255,255,255,.84);
+      font-weight:700;
+    }
+    .card .link{
+      width:fit-content;
+      font-size:.81rem;
+      font-weight:800;
+      color:#1b5e40;
+      padding:6px 9px;
+      border-radius:9px;
+      background:rgba(27,96,66,.12);
+    }
+    .certificate-images{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+    }
+    .certificate-img{
+      width:100%;
+      aspect-ratio:4/3;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid var(--edge);
+      background:#e8f3ed;
+      cursor:pointer;
+    }
+    .single-certificate{
+      aspect-ratio:16/10;
+    }
+    .pdf-preview{
+      width:100%;
+      aspect-ratio:16/10;
+      border-radius:10px;
+      border:1px solid var(--edge);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      gap:10px;
+      padding:12px;
+      color:#1a5a3d;
+      font-weight:700;
+      background:linear-gradient(145deg,rgba(255,255,255,.84),rgba(234,246,238,.8));
+    }
+    .pdf-preview small{
+      font-size:.78rem;
+      opacity:.85;
+      font-weight:600;
+    }
+    .leadstar-slider{
+      display:grid;
+      gap:8px;
+    }
+    .leadstar-slide{
+      display:none;
+    }
+    .leadstar-slide.active{
+      display:block;
+    }
+    .leadstar-controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+    }
+    .leadstar-btn{
+      border:1px solid var(--edge);
+      background:var(--panel);
+      color:var(--green2);
+      border-radius:9px;
+      padding:6px 10px;
+      font-size:.78rem;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .leadstar-count{
+      font-size:.8rem;
+      color:var(--muted);
+      font-weight:700;
+      min-width:56px;
+      text-align:center;
+    }
+    .people-carousel-shell{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      gap:16px;
+      align-items:center;
+    }
+    .people-nav{
+      width:38px;
+      height:38px;
+      border-radius:999px;
+      border:1px solid var(--edge);
+      background:var(--panel);
+      color:var(--green2);
+      font-size:1.05rem;
+      font-weight:800;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+    }
+    .people-track{
+      display:flex;
+      gap:18px;
+      overflow-x:auto;
+      padding:10px 4px;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+    }
+    .people-track::-webkit-scrollbar{
+      height:0;
+    }
+    .testimonial-card{
+      flex:0 0 min(320px,82vw);
+      scroll-snap-align:start;
+      border-radius:14px;
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .testimonial-media{
+      width:100%;
+      aspect-ratio:4/5.2;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(20,85,57,.22);
+      background:#e6f2eb;
+    }
+    .testimonial-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .testimonial-content{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height:190px;
+    }
+    .testimonial-name{
+      font-family:"Sora",sans-serif;
+      font-size:1rem;
+      color:#16573a;
+      line-height:1.2;
+    }
+    .testimonial-role{
+      font-size:.74rem;
+      color:var(--muted);
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+    .testimonial-text{
+      color:#48675a;
+      font-size:.88rem;
+      line-height:1.5;
+    }
+    .testimonial-card .link{
+      margin-top:auto;
+    }
+    .contact{
+      border-radius:var(--r);
+      padding:22px;
+      display:grid;
+      gap:16px;
+      box-shadow:var(--shadow);
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+    .contact a{
+      border-radius:12px;
+      padding:12px;
+      border:1px solid rgba(22,86,57,.2);
+      background:rgba(255,255,255,.78);
+    }
+    .social-icons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:4px;
+    }
+    .social-icon{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      border:1px solid var(--edge);
+      background:var(--panel);
+      display:grid;
+      place-items:center;
+      color:#1f5f40;
+      transition:.2s ease;
+    }
+    .social-icon:hover{
+      transform:translateY(-2px);
+      color:#11492f;
+      background:rgba(31,109,73,.12);
+    }
+    .social-icon-svg{
+      width:17px;
+      height:17px;
+    }
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      background:rgba(7,19,14,.78);
+      z-index:80;
+      padding:20px;
+    }
+    .modal.open{
+      display:grid;
+    }
+    .modal-content{
+      position:relative;
+      display:grid;
+      justify-items:center;
+      gap:10px;
+      width:100%;
+    }
+    .modal-close{
+      position:absolute;
+      top:-8px;
+      right:max(2vw,8px);
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.28);
+      background:rgba(6,22,16,.72);
+      color:#e8fff2;
+      font-size:1rem;
+      font-weight:800;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+    }
+    .modal-image{
+      max-width:min(960px,94vw);
+      max-height:88vh;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.2);
+      object-fit:contain;
+      box-shadow:0 18px 42px rgba(0,0,0,.4);
+      background:#112117;
+    }
+    .modal-nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:rgba(6,22,16,.7);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:999px;
+      padding:7px 10px;
+    }
+    .modal-nav-btn{
+      border:1px solid rgba(255,255,255,.24);
+      background:rgba(255,255,255,.08);
+      color:#ebfff4;
+      border-radius:999px;
+      padding:6px 11px;
+      font-size:.8rem;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .modal-counter{
+      color:#eafff3;
+      font-size:.82rem;
+      font-weight:700;
+      min-width:58px;
+      text-align:center;
+    }
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%) translateY(18px);
+      background:rgba(12,36,26,.9);
+      color:#eafff2;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:10px;
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:700;
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+      z-index:95;
+      white-space:nowrap;
+    }
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+    .label{display:block;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#236045;font-weight:800}
+    .value{display:block;color:#1f4f38;font-weight:700;word-break:break-word}
+    footer{padding:16px 0 28px;text-align:center;color:#55766a;font-size:.9rem}
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .about-layout{grid-template-columns:1fr}
+      .about-pic-wrap{max-width:220px}
+      .certificate-images{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .people-carousel-shell{grid-template-columns:1fr}
+      .people-nav{display:none}
+      .testimonial-card{flex:0 0 min(330px,88vw)}
+    }
+    @media (max-width:760px){
+      body{padding-bottom:92px}
+      .wrap{width:min(1100px,94vw)}
+      .top{
+        top:10px;
+        margin-top:10px;
+        border-radius:18px;
+        padding:9px 12px;
+      }
+      .links{display:none}
+      .mobile{
+        display:flex;
+        position:fixed;
+        left:50%;
+        bottom:10px;
+        transform:translateX(-50%);
+        width:min(94vw,520px);
+        z-index:60;
+        margin-top:0;
+        justify-content:space-between;
+        align-items:center;
+      }
+      .mobile a{
+        flex:1;
+        text-align:center;
+        padding:10px 8px;
+        font-size:.76rem;
+        border-radius:12px;
+      }
+      main{padding-top:28px}
+      .hero{border-radius:20px;padding:18px}
+      .about,.card,.contact{border-radius:16px}
+      .projects{gap:12px}
+      .chips{gap:6px}
+      .toast{bottom:84px}
+    }
+    @media (max-width:560px){
+      .actions .btn{width:100%}
+      .brand span{font-size:.95rem}
+      h1{font-size:clamp(1.6rem,8vw,2.2rem)}
+      .mobile a{font-size:.72rem;padding:9px 6px}
+    }
+  </style>
 </head>
-<body class="light-theme no-js">
-  <nav class="nav">
-    <div class="nav-container">
-      <img src="favicon.png" alt="Kuma Tsegaye Logo" class="logo-img" />
-      <h1 class="logo-text">Kuma Tsegaye</h1>
-      <div class="desktop-nav">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <button id="themeToggle" class="theme-toggle">
-          <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="theme-icon" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
-          </svg>
-          <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="theme-icon hidden" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </svg>
-        </button>
-      </div>
-      <button id="mobileMenuButton" class="mobile-menu-button">
-        <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+<body class="no-js">
+  <header class="wrap top glass">
+    <a class="brand" href="#top">
+      <img src="favicon.png" alt="Kuma Tsegaye Logo" class="logo-img" onerror="this.onerror=null;this.src='https://dummyimage.com/120x120/e9f5ee/1d5e40&text=K';">
+      <span>Kuma Tsegaye</span>
+    </a>
+    <div class="top-tools">
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#people">People</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
+  <nav id="mobileNav" class="wrap mobile glass">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#people">People</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Mobile Menu -->
-<div id="mobileMenu" class="mobile-menu hidden" aria-hidden="true">
-  <div class="mobile-menu-overlay"></div>
-  <div class="mobile-menu-content" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
-    <a href="#about" class="mobile-nav-link">About</a>
-    <a href="#projects" class="mobile-nav-link">Projects</a>
-    <a href="#experience" class="mobile-nav-link">Experience</a>
-    <a href="#contact" class="mobile-nav-link">Contact</a>
-    <button id="mobileThemeToggle" class="theme-toggle mobile-theme-toggle" aria-label="Toggle theme">
-      <svg id="mobileSunIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
-      </svg>
-      <svg id="mobileMoonIcon" xmlns="http://www.w3.org/2000/svg" class="mobile-theme-icon hidden" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-      </svg>
-    </button>
-    <button id="closeMobileMenu" class="close-mobile-menu" aria-label="Close menu">
-      <svg xmlns="http://www.w3.org/2000/svg" class="close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
-</div>
-
-
-  <main class="main-container">
-    <section class="hero-section fade-in-up">
-      <div class="hero-gradient">
-        <h2 class="hero-title">Hey there, I'm Kuma Tsegaye</h2>
-        <p class="hero-subtitle">Entrepreneur, CPO @ Nuner Rentals & Front-End Developer</p>
-        <a href="#contact" class="primary-button">
-          Contact Me
-        </a>
-      </div>
+  <main class="wrap" id="top">
+    <section class="hero glass">
+      <article>
+        <h1>Hi, I am Kuma. I design and build modern products with clean experience and strong visual feel.</h1>
+        <p class="lead">I focus on practical full-stack execution, friendly communication, and layouts that feel polished on every screen size.</p>
+        <div class="chips">
+          <span class="chip">Full-Stack Developer</span>
+          <span class="chip">CMS Expert</span>
+          <span class="chip">UI/UX Design</span>
+          <span class="chip">Modern Layout Designer</span>
+          <span class="chip">Softwere Engineer</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Let us build together</a>
+          <a class="btn ghost" href="#projects">View projects</a>
+        </div>
+      </article>
     </section>
 
-    <section id="about" class="section fade-in-up">
-      <div class="card">
-        <div class="about-container">
-          <div class="profile-img-container">
-            <img src="profilepic.png" alt="Kuma Tsegaye Profile Photo" class="profile-img" />
+    <section id="about">
+      <div class="head">
+        <h2>About Me</h2>
+      </div>
+      <article class="about glass">
+        <div class="about-layout">
+          <div class="about-pic-wrap">
+            <img src="profilepic.png" alt="Kuma Tsegaye Profile Photo" class="about-pic" onerror="this.onerror=null;this.src='https://dummyimage.com/500x500/e8f5ee/1d5e40&text=Kuma';">
           </div>
-          <div class="about-content">
-            <h3 class="section-title">About Me</h3>
-            <p id="about-text" class="about-text">
-              I'm a front-end developer and Entrepreneur based in Ethiopia. As the Chief Product Officer (CPO) of Nuner, a rental platform for houses and cars, I combine technical expertise with product leadership. My front-end development skills in HTML, CSS, JavaScript, and Tailwind enable me to build real projects while my entrepreneurial mindset drives innovation and growth.
+          <div>
+            <p class="about-copy">
+              I am a product-focused builder who enjoys turning ideas into complete digital experiences. I combine practical engineering and modern UI direction to deliver websites that are clean, friendly, and useful.
             </p>
-            <div class="skills-container">
+            <div class="skills-list">
+              <span class="skill-badge">Full-Stack Developer</span>
+              <span class="skill-badge">CMS Expert</span>
+              <span class="skill-badge">UI/UX Design</span>
+              <span class="skill-badge">Modern Layout Designer</span>
+              <span class="skill-badge">Softwere Engineer</span>
               <span class="skill-badge">HTML</span>
               <span class="skill-badge">CSS</span>
               <span class="skill-badge">JavaScript</span>
-              <span class="skill-badge">Tailwind</span>
-              <span class="skill-badge">Product Management</span>
-              <span class="skill-badge">Entrepreneurship</span>
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">PHP</span>
+              <span class="skill-badge">MySQL</span>
             </div>
           </div>
         </div>
+      </article>
+    </section>
+
+    <section id="projects">
+      <div class="head">
+        <h2>Projects</h2>
+      </div>
+      <div class="projects">
+        <article class="card glass project-route" data-status="update">
+          <div class="media">
+            <img src="nuner-screenshot.png" alt="Nuner Rentals screenshot" onerror="this.onerror=null;this.src='https://dummyimage.com/900x560/e8f5ee/1d5e40&text=Nuner+Rentals';">
+          </div>
+          <div class="row"><h3>Nuner Rentals</h3><span class="badge">On Update</span></div>
+          <p>Rental platform for houses and cars, with product leadership and continuous web improvement.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+          <a class="link" href="#" data-no-open="true">On update</a>
+        </article>
+        <article class="card glass project-route" data-url="https://exploromia.netlify.app" data-status="live">
+          <div class="media">
+            <img src="exploromia-screenshot.png" alt="Exploromia screenshot" onerror="this.onerror=null;this.src='https://dummyimage.com/900x560/e8f5ee/1d5e40&text=Exploromia';">
+          </div>
+          <div class="row"><h3>Exploromia</h3><span class="badge">Live</span></div>
+          <p>Tourism platform promoting Oromia through visual storytelling and a clearer browsing experience.</p>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          <a class="link" href="https://exploromia.netlify.app" target="_blank" rel="noopener noreferrer">Visit project</a>
+        </article>
+        <article class="card glass project-route" data-status="ongoing">
+          <div class="media">
+            <img src="taximate-screenshot.png" alt="Taxi-mate screenshot" onerror="this.onerror=null;this.src='https://dummyimage.com/900x560/e8f5ee/1d5e40&text=Taxi-mate';">
+          </div>
+          <div class="row"><h3>Taxi-mate</h3><span class="badge">Ongoing</span></div>
+          <p>Transport web app in development, designed for simpler booking and better local ride flow.</p>
+          <div class="tags"><span class="tag">Web App</span><span class="tag">UI Layout</span><span class="tag">Routing UX</span></div>
+          <a class="link" href="#" data-no-open="true">Ongoing</a>
+        </article>
+        <article class="card glass project-route" data-status="ongoing">
+          <div class="media">
+            <img src="litloom-screenshot.png" alt="Litloom screenshot" onerror="this.onerror=null;this.src='https://dummyimage.com/900x560/e8f5ee/1d5e40&text=Litloom';">
+          </div>
+          <div class="row"><h3>Litloom</h3><span class="badge">Ongoing</span></div>
+          <p>New creative project focused on elegant storytelling, modern layout style, and clean product identity.</p>
+          <div class="tags"><span class="tag">UI/UX</span><span class="tag">Brand Web</span><span class="tag">Modern Design</span></div>
+          <a class="link" href="#" data-no-open="true">Ongoing</a>
+        </article>
       </div>
     </section>
 
-    <section id="projects" class="section fade-in-up">
-      <h3 class="section-title">My Projects</h3>
-      <div class="projects-grid">
-        <div class="project-card card" onclick="window.open('https://nuner.x10.mx', '_blank')">
-          <div class="project-image-container">
-            <img src="nuner-screenshot.png" alt="Nuner Rentals Project" class="project-image" />
-            <div class="project-overlay">
-              <span class="project-overlay-title">Visit Project</span>
-              <span class="project-overlay-subtitle">nuner.x10.mx</span>
+    <section id="experience">
+      <div class="head">
+        <h2>Experience</h2>
+      </div>
+      <div class="projects">
+        <article class="card glass">
+          <div class="row"><h3>Leadstar Certificates</h3><span class="badge">Certified</span></div>
+          <p>IT member, leader, and programming lecturer with team mentorship experience.</p>
+          <div class="leadstar-slider">
+            <img src="IMG_20250628_115425_802.jpg" alt="Leadstar Certificate 1" class="certificate-img leadstar-slide active" data-gallery="leadstar" onerror="this.onerror=null;this.src='https://dummyimage.com/600x450/e8f5ee/1d5e40&text=Leadstar+Certificate';">
+            <img src="ITcertificate.jpg" alt="Leadstar Certificate 2" class="certificate-img leadstar-slide" data-gallery="leadstar" onerror="this.onerror=null;this.src='https://dummyimage.com/600x450/e8f5ee/1d5e40&text=IT+Certificate';">
+            <img src="ITcertificate2.jpg" alt="Leadstar Certificate 3" class="certificate-img leadstar-slide" data-gallery="leadstar" onerror="this.onerror=null;this.src='https://dummyimage.com/600x450/e8f5ee/1d5e40&text=IT+Certificate+2';">
+            <div class="leadstar-controls">
+              <button id="leadstarPrev" class="leadstar-btn" type="button">Previous</button>
+              <span id="leadstarCount" class="leadstar-count">1 / 3</span>
+              <button id="leadstarNext" class="leadstar-btn" type="button">Next</button>
             </div>
           </div>
-          <h4 class="project-title">Nuner Rentals</h4>
-          <p class="project-description">As Entrepreneur and Chief Product Officer (CPO), I'm driving the vision, operations, and growth of Nuner - a rental platform for houses and cars.</p>
-          <div class="project-skills">
-            <span class="skill-badge">HTML</span>
-            <span class="skill-badge">CSS</span>
-            <span class="skill-badge">JavaScript</span>
-            <span class="skill-badge">PHP</span>
-            <span class="skill-badge">MySQL</span>
-          </div>
-        </div>
-
-        <div class="project-card card" onclick="window.open('https://exploromia.netlify.app', '_blank')">
-          <div class="project-image-container">
-            <img src="exploromia-screenshot.png" alt="Exploromia Project" class="project-image" />
-            <div class="project-overlay">
-              <span class="project-overlay-title">Visit Project</span>
-              <span class="project-overlay-subtitle">exploromia.netlify.app</span>
-            </div>
-          </div>
-          <h4 class="project-title">Exploromia</h4>
-          <p class="project-description">A tourism web promoting Oromia's beauty, currently under development to showcase the region's attractions.</p>
-          <div class="project-skills">
-            <span class="skill-badge">HTML</span>
-            <span class="skill-badge">CSS</span>
-            <span class="skill-badge">JavaScript</span>
-          </div>
-        </div>
-
-        <div class="project-card card">
-          <div class="project-image-container">
-            <img src="taximate-screenshot.png" alt="Taxi-mate Project" class="project-image" />
-            <div class="project-overlay">
-              <span class="project-overlay-title">Coming Soon</span>
-            </div>
-          </div>
-          <h4 class="project-title">Taxi-mate</h4>
-          <p class="project-description">Transportation services in Shashamene, currently under development to provide efficient taxi services.</p>
-          <div class="project-skills">
-            <span class="skill-badge">Still on work!</span>
-          </div>
-        </div>
+        </article>
+        <article class="card glass">
+          <div class="row"><h3>Benchmark Leadership</h3><span class="badge">Certified</span></div>
+          <p>Recognition for initiative, leadership, and effective contribution in organized programs.</p>
+          <img src="Benchmarkcertificate.jpg" alt="Benchmark Leadership Certificate" class="certificate-img single-certificate" data-gallery="benchmark" onerror="this.onerror=null;this.src='https://dummyimage.com/960x580/e8f5ee/1d5e40&text=Benchmark+Leadership';">
+        </article>
+        <article class="card glass">
+          <div class="row"><h3>Udacity Foundations</h3><span class="badge">Nanodegree</span></div>
+          <p>Programming foundations certificate covering core software development thinking.</p>
+          <a class="link" href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" rel="noopener noreferrer">View certificate</a>
+          <img src="udacityimg.jpg" alt="Udacity Certificate" class="certificate-img single-certificate" data-gallery="udacity" onerror="this.onerror=null;this.src='https://dummyimage.com/960x580/e8f5ee/1d5e40&text=Udacity+Certificate';">
+        </article>
+        <article class="card glass">
+          <div class="row"><h3>Recommendations</h3><span class="badge">Reference</span></div>
+          <p>Feedback and endorsements from collaboration in academy and project teams.</p>
+          <a class="link" href="recomendations.pdf" target="_blank" rel="noopener noreferrer">View document</a>
+          <a class="pdf-preview" href="recomendations.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Recommendations PDF</span>
+            <small>Open document</small>
+          </a>
+        </article>
       </div>
     </section>
-    
-   <section id="experience" class="section fade-in-up">
-  <h3 class="section-title">Experience & Certificates</h3>
-  <div class="experience-grid">
-    
-    <div class="experience-card fade-in-up">
-      <h4 class="experience-title">Leadstar Certificates</h4>
-      <p class="experience-subtitle">IT member, Leader & Programming Lecturer</p>
-      <div class="certificate-images">
-        <img src="IMG_20250628_115425_802.jpg" alt="Leadstar Certificate 1" class="certificate-img" />
-        <img src="ITcertificate.jpg" alt="Leadstar Certificate 2" class="certificate-img" />
-        <img src="ITcertificate2.jpg" alt="Leadstar Certificate 3" class="certificate-img" />
+
+    <section id="people">
+      <div class="head">
+        <h2>People I Work With</h2>
       </div>
-    </div>
-    
-    <div class="experience-card fade-in-up">
-      <h4 class="experience-title">Benchmark Leadership Certificate</h4>
-      <p class="experience-subtitle">Outstanding leadership & initiative</p>
-      <img src="Benchmarkcertificate.jpg" alt="Benchmark Leadership Certificate" class="certificate-img single-certificate" />
-    </div>
-    
-    <div class="experience-card fade-in-up">
-      <h4 class="experience-title">Udacity Programming Foundations</h4>
-      <p class="experience-subtitle">Udacity Nanodegree Certificate</p>
-      <a href="https://www.udacity.com/certificate/e/893711fa-c798-11ef-a25c-7f9f1e2973bb" target="_blank" class="certificate-link">🔗 View Certificate</a>
-      <img src="udacityimg.jpg" alt="Udacity Certificate" class="certificate-img single-certificate" />
-    </div>
-    
-    <div class="experience-card fade-in-up">
-      <h4 class="experience-title">Recommendations</h4>
-      <p class="experience-subtitle">Feedback and endorsements for my work in Leadstar academy IT club.</p>
-      <a href="recomendations.pdf" target="_blank" class="primary-button small-button">
-        📄 View Recommendation
-      </a>
-    </div>
-    
-  </div>
-</section>
-
-<section id="people" class="section fade-in-up">
-  <h3 class="section-title">People I Work Together</h3>
-  <div class="projects-grid">
-   
-<div class="project-card card">
-  <div class="project-image-container">
-    <img src="feyu.jpg" alt="Feyisa Mustefa" class="project-image" />
-  </div>
-  <h4 class="project-title">Feyisa Mustefa Koshe </h4>
-  <p class="project-description">
-    We co-founded Nuner and worked side by side to build the web platform. As Nuner’s Chief Technology Officer, he leads the tech vision and strategy. Our collaboration continues to this day, as we keep creating and improving together.
-  </p>
-  <a href="https://t.me/Feyumustefa" class="primary-button small-button">Contact</a>
-</div>
-    
-<div class="project-card card">
-  <div class="project-image-container">
-    <img src="nasir.jpg" alt="Nasir Aman Churiso" class="project-image" />
-  </div>
-  <h4 class="project-title">Nasir Aman Churiso</h4>
-  <p class="project-description">
-    We co-founded Nuner and built the platform from the ground up. As Nuner’s Chief Executive Officer, he guides the vision, growth, and leadership of the company. Our collaboration continues to this day, driving forward new projects and innovations together.
-  </p>
-  <a href="https://t.me/NAAS9O" class="primary-button small-button">Contact</a>
-</div>
-
-<div class="project-card card">
-  <div class="project-image-container">
-    <img src="https://avatar.iran.liara.run/public/boy" alt="Yosen Tadele Negash" class="project-image" />
-  </div>
-
-  <h4 class="project-title">Yosen Tadele Negash</h4>
-  <p class="project-description">
-    We worked together on Exploromia, handling every aspect of the project side by side — from concept to final deployment. It was a true all-hands collaboration, where we both shared the workload equally and brought the vision to life.
-  </p>
-  <a href="https://t.me/lil_thunder" class="primary-button small-button">Contact</a>
-</div>
-
-<div class="project-card card">
-  <div class="project-image-container">
-    <img src="https://avatar.iran.liara.run/public/girl" alt="Firehiwot Eshetu" class="project-image" />
-  </div>
-
-  <h4 class="project-title">Firehiwot Eshetu</h4>
-  <p class="project-description">
-    We co-founded FK-Power Studios, building websites for clients and delivering creative digital solutions. It was an incredible journey where we combined our skills, grew our expertise, and achieved success together.
-  </p>
-  <a href="https://t.me/FehHoh" class="primary-button small-button">Contact</a>
-</div>
-
-  </div>
-</section>
+      <div class="people-carousel-shell">
+        <button id="peoplePrev" class="people-nav" type="button" aria-label="Previous person">&#10094;</button>
+        <div id="peopleTrack" class="people-track">
+          <article class="card glass testimonial-card">
+            <div class="testimonial-media">
+              <img src="flower.jpg" alt="Flower Gezahegn photo" class="person-modal-img" data-gallery="person-flower" onerror="this.onerror=null;this.src='https://dummyimage.com/800x600/e8f5ee/1d5e40&text=Flower+Gezahegn';">
+            </div>
+            <div class="testimonial-content">
+              <h3 class="testimonial-name">Flower Gezahegn</h3>
+              <p class="testimonial-role">Partner</p>
+              <p class="testimonial-text">We are currently collaborating on Litloom, shaping the product direction and building the project together.</p>
+              <a class="link" href="#projects">Ongoing project</a>
+            </div>
+          </article>
+          <article class="card glass testimonial-card">
+            <div class="testimonial-media">
+              <img src="feyu.jpg" alt="Feyisa Mustefa Koshe photo" class="person-modal-img" data-gallery="person-feyisa" onerror="this.onerror=null;this.src='https://dummyimage.com/800x600/e8f5ee/1d5e40&text=Feyisa+Mustefa+Koshe';">
+            </div>
+            <div class="testimonial-content">
+              <h3 class="testimonial-name">Feyisa Mustefa Koshe</h3>
+              <p class="testimonial-role">CTO</p>
+              <p class="testimonial-text">Co-founder at Nuner, leading technology direction while we continue to improve the platform together.</p>
+              <a class="link" href="https://t.me/Feyumustefa" target="_blank" rel="noopener noreferrer">Contact</a>
+            </div>
+          </article>
+          <article class="card glass testimonial-card">
+            <div class="testimonial-media">
+              <img src="nasir.jpg" alt="Nasir Aman Churiso photo" class="person-modal-img" data-gallery="person-nasir" onerror="this.onerror=null;this.src='https://dummyimage.com/800x600/e8f5ee/1d5e40&text=Nasir+Aman+Churiso';">
+            </div>
+            <div class="testimonial-content">
+              <h3 class="testimonial-name">Nasir Aman Churiso</h3>
+              <p class="testimonial-role">CEO</p>
+              <p class="testimonial-text">Co-founder at Nuner, guiding growth and strategy while we build practical digital solutions.</p>
+              <a class="link" href="https://t.me/NAAS9O" target="_blank" rel="noopener noreferrer">Contact</a>
+            </div>
+          </article>
+          <article class="card glass testimonial-card">
+            <div class="testimonial-media">
+              <img src="https://avatar.iran.liara.run/public/boy" alt="Yosen Tadele Negash photo" class="person-modal-img" data-gallery="person-yosen" onerror="this.onerror=null;this.src='https://dummyimage.com/800x600/e8f5ee/1d5e40&text=Yosen+Tadele+Negash';">
+            </div>
+            <div class="testimonial-content">
+              <h3 class="testimonial-name">Yosen Tadele Negash</h3>
+              <p class="testimonial-role">Partner</p>
+              <p class="testimonial-text">Collaborator on Exploromia, working together from planning and UI decisions to deployment flow.</p>
+              <a class="link" href="https://t.me/lil_thunder" target="_blank" rel="noopener noreferrer">Contact</a>
+            </div>
+          </article>
+          <article class="card glass testimonial-card">
+            <div class="testimonial-media">
+              <img src="https://avatar.iran.liara.run/public/girl" alt="Firehiwot Eshetu photo" class="person-modal-img" data-gallery="person-firehiwot" onerror="this.onerror=null;this.src='https://dummyimage.com/800x600/e8f5ee/1d5e40&text=Firehiwot+Eshetu';">
+            </div>
+            <div class="testimonial-content">
+              <h3 class="testimonial-name">Firehiwot Eshetu</h3>
+              <p class="testimonial-role">Co-Founder</p>
+              <p class="testimonial-text">Co-founded FK-Power Studios, creating websites and client products through shared creativity.</p>
+              <a class="link" href="https://t.me/FehHoh" target="_blank" rel="noopener noreferrer">Contact</a>
+            </div>
+          </article>
+        </div>
+        <button id="peopleNext" class="people-nav" type="button" aria-label="Next person">&#10095;</button>
+      </div>
+    </section>
 
     <div id="imageModal" class="modal">
-      <img id="modalImg" src="" alt="Expanded certificate" class="modal-image" />
+      <div class="modal-content">
+        <button id="modalClose" class="modal-close" type="button" aria-label="Close image viewer">X</button>
+        <img id="modalImg" src="" alt="Expanded certificate" class="modal-image">
+        <div class="modal-nav">
+          <button id="modalPrev" class="modal-nav-btn" type="button">Previous</button>
+          <span id="modalCount" class="modal-counter">1 / 1</span>
+          <button id="modalNext" class="modal-nav-btn" type="button">Next</button>
+        </div>
+      </div>
     </div>
 
-    <section id="contact" class="section fade-in-up">
-      <div class="card contact-card">
-        <h3 class="section-title">Get In Touch</h3>
-        <p class="contact-description">Have a project in mind or want to discuss potential opportunities? Feel free to reach out through any of these channels.</p>
-        
-        <div class="contact-links">
-          <a href="mailto:kumatsegaye1530@gmail.com" class="contact-link">
-            <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-            <span>kumatsegaye1530@gmail.com</span>
-          </a>
-
-          <a href="tel:+251995766839" class="contact-link">
-            <svg class="contact-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h1.28a2 2 0 011.8 1.1l1.6 3.2a2 2 0 01-.45 2.4l-1.2 1.2a16.001 16.001 0 006.36 6.36l1.2-1.2a2 2 0 012.4-.45l3.2 1.6a2 2 0 011.1 1.8V19a2 2 0 01-2 2h-.5C9.611 21 3 14.389 3 6.5V6a1 1 0 010-.17z"/>
-            </svg>
-            <span>+251 995 766 839</span>
-          </a>
-
-          <a href="https://t.me/kumatsegaye" target="_blank" class="contact-link">
-            <svg class="contact-icon" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M9.993 16.443l-.385 3.742c.55 0 .787-.236 1.07-.52l2.567-2.462 5.32 3.916c.974.537 1.67.256 1.915-.9L23.958 4.2c.312-1.65-.605-2.312-1.575-1.927L1.84 9.396c-1.615.623-1.6 1.51-.276 1.926l5.592 1.744 13.012-8.2c.613-.366 1.174-.164.713.229L9.993 16.443z"/>
-            </svg>
-            <span>@kumatsegaye</span>
-          </a>
+    <section id="contact">
+      <div class="head">
+        <h2>Contact</h2>
+      </div>
+      <article class="contact glass">
+        <div class="contact-grid">
+          <a href="mailto:kumatsegae@gmail.com"><span class="label">Email</span><span class="value">kumatsegae@gmail.com</span></a>
+          <a href="tel:+251995766839"><span class="label">Phone</span><span class="value">+251 995 766 839</span></a>
+          <a href="https://t.me/kumatsegaye" target="_blank" rel="noopener noreferrer"><span class="label">Telegram</span><span class="value">@kumatsegaye</span></a>
         </div>
-
         <div class="social-icons">
-          <a href="https://github.com/Kumatsegayie" target="_blank" aria-label="GitHub" class="social-icon">
+          <a href="https://github.com/Kumatsegayie" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
             <svg class="social-icon-svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0a12 12 0 00-3.793 23.4c.6.112.82-.262.82-.582 0-.287-.01-1.045-.015-2.052-3.338.726-4.042-1.613-4.042-1.613-.546-1.387-1.332-1.757-1.332-1.757-1.089-.745.084-.73.084-.73 1.205.084 1.838 1.236 1.838 1.236 1.07 1.833 2.806 1.304 3.492.996.108-.774.418-1.304.76-1.604-2.665-.304-5.466-1.334-5.466-5.93 0-1.31.47-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.495 11.495 0 013.003-.404 11.5 11.5 0 013.003.404c2.29-1.552 3.297-1.23 3.297-1.23.654 1.653.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.803 5.624-5.475 5.92.43.372.813 1.102.813 2.222 0 1.604-.015 2.896-.015 3.286 0 .322.216.698.825.58A12 12 0 0012 0z"/>
             </svg>
           </a>
-
-          <a href="https://www.linkedin.com/in/kumatsegaye" target="_blank" aria-label="LinkedIn" class="social-icon">
+          <a href="https://www.linkedin.com/in/kumatsegaye" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
             <svg class="social-icon-svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.452 20.452h-3.554v-5.569c0-1.328-.026-3.037-1.85-3.037-1.85 0-2.132 1.444-2.132 2.937v5.669H9.366V9h3.414v1.561h.047c.476-.9 1.637-1.849 3.369-1.849 3.602 0 4.266 2.37 4.266 5.448v6.292zM5.337 7.433a2.07 2.07 0 11.002-4.14 2.07 2.07 0 01-.002 4.14zM6.97 20.452H3.7V9h3.27v11.452z"/>
             </svg>
           </a>
-
-          <a href="https://instagram.com/kuma_tsegaye" target="_blank" aria-label="Instagram" class="social-icon">
+          <a href="https://instagram.com/kuma_tsegaye" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
             <svg class="social-icon-svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
             </svg>
           </a>
-
-          <a href="https://www.facebook.com/kumatsegayie" target="_blank" aria-label="Facebook" class="social-icon">
+          <a href="https://www.facebook.com/kumatsegayie" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon">
             <svg class="social-icon-svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M22 12.073C22 6.486 17.523 2 12.06 2S2 6.486 2 12.073c0 5.022 3.657 9.175 8.438 9.925v-7.025h-2.54v-2.9h2.54v-2.21c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.196 2.238.196v2.464h-1.26c-1.243 0-1.63.771-1.63 1.562v1.878h2.773l-.443 2.9h-2.33v7.025C18.343 21.248 22 17.095 22 12.073z"/>
             </svg>
           </a>
         </div>
-      </div>
+      </article>
     </section>
   </main>
 
-  <footer class="footer">
-    <p>© 2025 Kuma Tsegaye. All rights reserved.</p>
-  </footer>
+  <div id="toast" class="toast">on update or ongoing project</div>
 
-  <script src="script.js"></script>
+  <footer class="wrap">&copy; <span id="y"></span> Kuma Tsegaye. All rights reserved.</footer>
+
+  <script>
+    document.body.classList.remove("no-js");
+    const body=document.body;
+    const imageModal=document.getElementById("imageModal");
+    const modalImg=document.getElementById("modalImg");
+    const modalClose=document.getElementById("modalClose");
+    const modalPrev=document.getElementById("modalPrev");
+    const modalNext=document.getElementById("modalNext");
+    const modalCount=document.getElementById("modalCount");
+    const certificateImgs=document.querySelectorAll(".certificate-img");
+    const personImgs=document.querySelectorAll(".person-modal-img");
+    const projectCards=document.querySelectorAll("#projects .project-route");
+    const toast=document.getElementById("toast");
+    const leadstarSlides=document.querySelectorAll(".leadstar-slide");
+    const leadstarPrev=document.getElementById("leadstarPrev");
+    const leadstarNext=document.getElementById("leadstarNext");
+    const leadstarCount=document.getElementById("leadstarCount");
+    const peopleTrack=document.getElementById("peopleTrack");
+    const peoplePrev=document.getElementById("peoplePrev");
+    const peopleNext=document.getElementById("peopleNext");
+    let modalGroup=[];
+    let modalIndex=0;
+    let toastTimer;
+
+    let leadstarIndex=0;
+    function renderLeadstar(){
+      if(!leadstarSlides.length){return}
+      leadstarSlides.forEach((img,index)=>img.classList.toggle("active",index===leadstarIndex));
+      leadstarCount.textContent=(leadstarIndex+1)+" / "+leadstarSlides.length;
+    }
+    if(leadstarSlides.length){
+      renderLeadstar();
+      leadstarPrev.addEventListener("click",()=>{
+        leadstarIndex=(leadstarIndex-1+leadstarSlides.length)%leadstarSlides.length;
+        renderLeadstar();
+      });
+      leadstarNext.addEventListener("click",()=>{
+        leadstarIndex=(leadstarIndex+1)%leadstarSlides.length;
+        renderLeadstar();
+      });
+    }
+
+    function showToast(message){
+      toast.textContent=message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer=setTimeout(()=>toast.classList.remove("show"),2200);
+    }
+
+    function openProjectCard(card){
+      const url=(card.dataset.url||"").trim();
+      const status=(card.dataset.status||"").trim().toLowerCase();
+      const blocked=status==="ongoing"||status==="update";
+      if(url&& !blocked){
+        window.open(url,"_blank","noopener,noreferrer");
+        return;
+      }
+      showToast("on update or ongoing project");
+    }
+
+    projectCards.forEach(card=>{
+      card.addEventListener("click",(event)=>{
+        if(event.target.closest("a")){event.preventDefault()}
+        openProjectCard(card);
+      });
+    });
+
+    function peopleStepSize(){
+      if(!peopleTrack){return 300}
+      const card=peopleTrack.querySelector(".testimonial-card");
+      if(!card){return 300}
+      const styles=getComputedStyle(peopleTrack);
+      const gap=parseFloat(styles.gap||styles.columnGap||"0")||0;
+      return card.getBoundingClientRect().width+gap;
+    }
+
+    if(peopleTrack&&peoplePrev&&peopleNext){
+      peoplePrev.addEventListener("click",()=>{
+        peopleTrack.scrollBy({left:-peopleStepSize(),behavior:"smooth"});
+      });
+      peopleNext.addEventListener("click",()=>{
+        peopleTrack.scrollBy({left:peopleStepSize(),behavior:"smooth"});
+      });
+    }
+
+    function renderModalImage(){
+      if(!modalGroup.length){return}
+      const current=modalGroup[modalIndex];
+      modalImg.src=current.src;
+      modalImg.alt=current.alt||"Expanded certificate";
+      const hasMany=modalGroup.length>1;
+      modalPrev.classList.toggle("hidden",!hasMany);
+      modalNext.classList.toggle("hidden",!hasMany);
+      modalCount.classList.toggle("hidden",!hasMany);
+      modalCount.textContent=(modalIndex+1)+" / "+modalGroup.length;
+    }
+
+    function openModalFromImage(img){
+      const groupName=img.dataset.gallery||"single";
+      modalGroup=Array.from(document.querySelectorAll('img[data-gallery="'+groupName+'"]'));
+      if(!modalGroup.length){modalGroup=[img]}
+      modalIndex=Math.max(modalGroup.indexOf(img),0);
+      renderModalImage();
+      imageModal.classList.add("open");
+      body.style.overflow="hidden";
+    }
+
+    function closeModal(){
+      imageModal.classList.remove("open");
+      body.style.overflow="";
+    }
+
+    function nextModalImage(){
+      if(modalGroup.length<2){return}
+      modalIndex=(modalIndex+1)%modalGroup.length;
+      renderModalImage();
+    }
+
+    function prevModalImage(){
+      if(modalGroup.length<2){return}
+      modalIndex=(modalIndex-1+modalGroup.length)%modalGroup.length;
+      renderModalImage();
+    }
+
+    [...certificateImgs,...personImgs].forEach(img=>img.addEventListener("click",()=>openModalFromImage(img)));
+    modalClose.addEventListener("click",closeModal);
+    modalNext.addEventListener("click",nextModalImage);
+    modalPrev.addEventListener("click",prevModalImage);
+    imageModal.addEventListener("click",(event)=>{
+      if(event.target===imageModal){closeModal()}
+    });
+    document.addEventListener("keydown",(event)=>{
+      if(!imageModal.classList.contains("open")){return}
+      if(event.key==="Escape"){closeModal()}
+      if(event.key==="ArrowRight"){nextModalImage()}
+      if(event.key==="ArrowLeft"){prevModalImage()}
+    });
+
+    document.getElementById("y").textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>
-
-
-
