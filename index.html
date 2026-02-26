@@ -364,6 +364,7 @@
     .leadstar-slider{
       display:grid;
       gap:8px;
+      position:relative;
     }
     .leadstar-slide{
       display:none;
@@ -376,11 +377,29 @@
       align-items:center;
       justify-content:space-between;
       gap:8px;
+      position:absolute;
+      left:10px;
+      right:10px;
+      bottom:12px;
+      z-index:2;
+      opacity:0;
+      transform:translateY(8px);
+      pointer-events:none;
+      transition:.2s ease;
+      background:rgba(8,33,23,.62);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:999px;
+      padding:6px 8px;
+    }
+    .leadstar-slider:hover .leadstar-controls{
+      opacity:1;
+      transform:translateY(0);
+      pointer-events:auto;
     }
     .leadstar-btn{
-      border:1px solid var(--edge);
-      background:var(--panel);
-      color:var(--green2);
+      border:1px solid rgba(255,255,255,.26);
+      background:rgba(255,255,255,.14);
+      color:#e8fff3;
       border-radius:9px;
       padding:6px 10px;
       font-size:.78rem;
@@ -389,7 +408,7 @@
     }
     .leadstar-count{
       font-size:.8rem;
-      color:var(--muted);
+      color:#eafff4;
       font-weight:700;
       min-width:56px;
       text-align:center;
@@ -420,6 +439,10 @@
       padding:10px 4px;
       scroll-snap-type:x mandatory;
       scroll-behavior:smooth;
+      scrollbar-width:none;
+      -webkit-overflow-scrolling:touch;
+      touch-action:pan-x;
+      overscroll-behavior-x:contain;
     }
     .people-track::-webkit-scrollbar{
       height:0;
@@ -620,9 +643,20 @@
       .about-layout{grid-template-columns:1fr}
       .about-pic-wrap{max-width:220px}
       .certificate-images{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .people-carousel-shell{grid-template-columns:1fr}
-      .people-nav{display:none}
-      .testimonial-card{flex:0 0 min(330px,88vw)}
+      .leadstar-controls{
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
+      .people-carousel-shell{grid-template-columns:36px 1fr 36px;gap:8px}
+      .people-nav{
+        display:grid;
+        width:36px;
+        height:36px;
+        font-size:.95rem;
+      }
+      .people-track{padding:8px 0}
+      .testimonial-card{flex:0 0 min(330px,86vw)}
     }
     @media (max-width:760px){
       body{padding-bottom:92px}
@@ -665,6 +699,21 @@
       .brand span{font-size:.95rem}
       h1{font-size:clamp(1.6rem,8vw,2.2rem)}
       .mobile a{font-size:.72rem;padding:9px 6px}
+      .people-carousel-shell{grid-template-columns:32px 1fr 32px;gap:6px}
+      .people-nav{
+        width:32px;
+        height:32px;
+        font-size:.9rem;
+      }
+      .people-track{gap:12px}
+      .testimonial-card{flex:0 0 min(300px,84vw)}
+    }
+    @media (hover:none){
+      .leadstar-controls{
+        opacity:1;
+        transform:translateY(0);
+        pointer-events:auto;
+      }
     }
   </style>
 </head>
