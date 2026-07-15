@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('img:not(.brand-mark):not(.about-portrait img)').forEach(function (img) {
+    if (!img.hasAttribute('loading')) img.loading = 'lazy';
+    img.decoding = 'async';
+  });
+
+  var revealItems = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px 12% 0px', threshold: 0.01 });
+    revealItems.forEach(function (item) { revealObserver.observe(item); });
+  } else {
+    revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+  }
+
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -209,6 +228,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (sectionIds.indexOf(id) === -1) sectionIds.push(id);
   });
   var sections = sectionIds.map(function (id) { return document.getElementById(id); });
+  var sectionTops = [];
+  var scrollFrame = 0;
+
+  function cacheSectionTops() {
+    sectionTops = sections.map(function (section) {
+      return section ? section.getBoundingClientRect().top + window.scrollY : 0;
+    });
+  }
 
   function setActiveNav() {
     var scrollPosition = window.scrollY + 160;
@@ -216,8 +243,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (siteHeader) siteHeader.classList.toggle('is-scrolled', window.scrollY > 80);
 
-    sections.forEach(function (section, index) {
-      if (section && section.offsetTop <= scrollPosition) activeIndex = index;
+    sectionTops.forEach(function (sectionTop, index) {
+      if (sectionTop <= scrollPosition) activeIndex = index;
     });
 
     navLinks.forEach(function (link) {
@@ -246,12 +273,18 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('scroll', function () {
-    setActiveNav();
-    updateMobileNav();
+    if (scrollFrame) return;
+    scrollFrame = window.requestAnimationFrame(function () {
+      setActiveNav();
+      updateMobileNav();
+      scrollFrame = 0;
+    });
   }, { passive: true });
   window.addEventListener('resize', function () {
+    cacheSectionTops();
     setActiveNav();
     if (mobileNav && window.innerWidth > 700) mobileNav.classList.remove('is-collapsed');
   });
+  cacheSectionTops();
   setActiveNav();
 });
